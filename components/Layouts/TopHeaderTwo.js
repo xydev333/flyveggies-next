@@ -31,8 +31,8 @@ class TopHeaderTwo extends Component {
                         <div className="row align-items-center">
                             <div className="col-lg-4 col-md-12">
                                 <ul className="header-contact-info">
-                                    <li>Welcome to Livani</li>
-                                    <li>Call: +1-541-754-3010</li>
+                                    <li>Welcome to Fly Veggies!</li>
+                                    <li>Call:317-416-7142</li>
 
                                     <li>
                                         <div className="dropdown language-switcher d-inline-block">
@@ -84,7 +84,7 @@ class TopHeaderTwo extends Component {
 
                             <div className="col-lg-4 col-md-12">
                                 <div className="top-header-discount-info">
-                                    <p><strong>50% OFF</strong> all new collections! <Link href="#"><a>Discover Now!</a></Link></p>
+                                    <p><strong>25% OFF</strong> Hazy Promo Items<Link href="#"><a>Discover Now!</a></Link></p>
                                 </div>
                             </div>
 
