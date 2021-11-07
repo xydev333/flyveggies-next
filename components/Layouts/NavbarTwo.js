@@ -64,11 +64,12 @@ class NavbarTwo extends Component {
             <React.Fragment>
                 <div id="navbar" className="navbar-area">
                     <div className="main-nav">
-                        <div className="container-fluid">
-                            <nav className="navbar navbar-expand-md navbar-light">
+                        <div className="container-fluid bg-success shadow-lg">
+                            <nav className="navbar navbar-expand-md navbar-dark">
+                                <h4 className="display 4 text-white">Fly Veggies</h4>
                                 <Link href="/">
-                                    <a className="navbar-brand">
-                                        <img src={require("../../images/logo.png")} alt="logo" />
+                                    <a className="navbar-brand ml-3">
+                                        <img src={require("../../images/flyveggieslogo.png")} alt="logo" height="50px" width="50px" />
                                     </a>
                                 </Link>
 
@@ -87,10 +88,10 @@ class NavbarTwo extends Component {
                                 </button>
 
                                 <div className={classNameOne} id="navbarSupportedContent">
-                                    <ul className="navbar-nav">
-                                        <li className="nav-item">
-                                            <Link href="#">
-                                                <a className="nav-link">
+                                    <ul className="navbar-nav ">
+                                        <li className="nav-item ">
+                                            <Link href="/">
+                                                <a className="nav-link text-white">
                                                     Home <i className='bx bx-chevron-down'></i>
                                                 </a>
                                             </Link>
@@ -175,7 +176,7 @@ class NavbarTwo extends Component {
 
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link">
+                                                <a className="nav-link text-white">
                                                     Shop <i className='bx bx-chevron-down'></i>
                                                 </a>
                                             </Link>
@@ -313,7 +314,7 @@ class NavbarTwo extends Component {
 
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link">
+                                                <a className="nav-link text-white">
                                                     Pages <i className='bx bx-chevron-down'></i>
                                                 </a>
                                             </Link>
@@ -535,7 +536,7 @@ class NavbarTwo extends Component {
 
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link">
+                                                <a className="nav-link text-white">
                                                     Women's <i className='bx bx-chevron-down'></i>
                                                 </a>
                                             </Link>
@@ -661,7 +662,7 @@ class NavbarTwo extends Component {
  
                                         <li className="nav-item megamenu">
                                             <Link href="#">
-                                                <a className="nav-link">
+                                                <a className="nav-link text-white">
                                                     Men's <i className='bx bx-chevron-down'></i>
                                                 </a>
                                             </Link>
@@ -787,7 +788,7 @@ class NavbarTwo extends Component {
  
                                         <li className="nav-item">
                                             <Link href="#">
-                                                <a className="nav-link">
+                                                <a className="nav-link text-white">
                                                     Blog <i className='bx bx-chevron-down'></i>
                                                 </a>
                                             </Link>

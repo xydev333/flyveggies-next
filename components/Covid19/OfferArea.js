@@ -5,7 +5,7 @@ class OfferArea extends Component {
     render() {
         return (
             <section className="offer-area covid-19-offer bg-image3 ptb-100 jarallax">
-                <div className="container-fluid">
+                <div className="container-fluid shadow-lg">
                     <div className="row">
                         <div className="col-lg-5 col-md-6 offset-lg-7 offset-md-6">
                             <div className="offer-content-box">
