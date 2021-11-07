@@ -35,7 +35,7 @@ class Banner extends React.Component{
                     className="home-slides-two owl-carousel owl-theme"
                     {...options}
                 >
-                    <div className="main-banner banner-bg10">
+                    <div className="main-banner banner-bg22">
                         <div className="d-table">
                             <div className="d-table-cell">
                                 <div className="container-fluid">
@@ -44,9 +44,9 @@ class Banner extends React.Component{
                                             <div className="banner-content">
                                                 <div className="line"></div>
                                                 <span className="sub-title">Best Seller</span>
-                                                <h1>Medical Mask</h1>
+                                                <h1>THC Gummy Bears</h1>
 
-                                                <p>Be Clean & Keep Clean, Maintain Social Distance, Avoid All Kinds of Crowds including Social Gathering, Protect Yourself and Others, Save Humankind!</p>
+                                                <p>The Delicious & strong, Gummy Bears! Eceryone favorite is back! Made with our own local strain just like most of our products!</p>
 
                                                 <div className="btn-box">
                                                     <Link href="/products-left-sidebar">
@@ -61,7 +61,7 @@ class Banner extends React.Component{
                         </div>
                     </div>
 
-                    <div className="main-banner banner-bg11">
+                    <div className="main-banner banner-bg21">
                         <div className="d-table">
                             <div className="d-table-cell">
                                 <div className="container-fluid">
@@ -69,10 +69,10 @@ class Banner extends React.Component{
                                         <div className="col-lg-6 col-md-12">
                                             <div className="banner-content">
                                                 <div className="line"></div>
-                                                <span className="sub-title">Trading Collection</span>
-                                                <h1>Hand Sanitizer</h1>
+                                                <span className="sub-title">Todays Medicine is Green</span>
+                                                <h1>Marijuana: Todays Medicine</h1>
 
-                                                <p>Be Clean & Keep Clean, Maintain Social Distance, Avoid All Kinds of Crowds including Social Gathering, Protect Yourself and Others, Save Humankind!</p>
+                                                <p>Nowadays every one is taking to a new type of medicine! Frustrated with the pills and needle of todays big Pharma we set out to make that medicine right here in the USA!</p>
 
                                                 <div className="btn-box">
                                                     <Link href="/products-left-sidebar">

@@ -13,20 +13,20 @@ class Footer extends Component {
                                 <h3>About The Store</h3>
 
                                 <div className="about-the-store">
-                                    <p>One of the most popular on the web is shopping.</p>
+                                    <p>One of the Finest dispenaries around.</p>
 
                                     <ul className="footer-contact-info">
                                         <li>
                                             <i className='bx bx-map'></i> 
-                                            Wonder Street, USA, New York
+                                            Wonder Street, USA, Indiana
                                         </li>
                                         <li>
                                             <i className='bx bx-phone-call'></i> 
-                                            +1-541-754-3010
+                                            317-416-7142
                                         </li>
                                         <li>
                                             <i className='bx bx-envelope'></i> 
-                                            hello@livani.com
+                                            questions@flyveggies.com
                                         </li>
                                     </ul>
                                 </div>
@@ -86,11 +86,7 @@ class Footer extends Component {
                                             <a>Shop Now!</a>
                                         </Link>
                                     </li>
-                                    <li>
-                                        <Link href="/products-left-sidebar-2">
-                                            <a>Woman's</a>
-                                        </Link>
-                                    </li>
+                                   
                                     <li>
                                         <Link href="/faqs">
                                             <a>FAQ's</a>
@@ -170,7 +166,7 @@ class Footer extends Component {
                         <div className="row align-items-center">
                             <div className="col-lg-6 col-md-6">
                                 <p>
-                                    Copyright <i className='bx bx-copyright'></i>{currentYear} Livani Designed By <a href="https://envytheme.com/" target="_blank">EnvyTheme</a> - All rights reserved.
+                                    Copyright <i className='bx bx-copyright'></i>{currentYear} Beyond Web Service <a href="https://beyondwebservice.com" target="_blank">Doug and Angel</a> - All rights reserved.
                                 </p>
                             </div>
 

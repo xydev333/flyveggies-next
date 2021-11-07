@@ -578,7 +578,7 @@ Navbar CSS
         left: 0;
         width: 100%;
         z-index: 999;
-        box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 1);
         background: $white-color !important;
         transition: $transition;
     }
@@ -589,6 +589,7 @@ Navbar CSS
                     margin: {
                         left: 50px;
                         right: auto;
+                        box-shadow: 2px, 3px, 10px, $black-color;
                     };
                 }
             }
@@ -597,11 +598,12 @@ Navbar CSS
 }
 .main-nav {
     background-color: $white-color;
-
+    box-shadow: 2px, 3px, 10px, $black-color;
     .container-fluid {
         padding: {
             left: 40px;
             right: 40px;
+            box-shadow: 2px, 3px, 10px, $black-color;
         };
     }
     .navbar {
@@ -680,7 +682,7 @@ Navbar CSS
                     }
                 }
                 .dropdown-menu {
-                    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+                    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.7);
                     background: $white-color;
                     position: absolute;
                     border: none;
@@ -1385,14 +1387,15 @@ Main Banner CSS
         image: url(../../../images/main-banner2.jpg);
     };
 }
-.banner-bg10 {
+.banner-bg21 {
     background: {
-        image: url(../../../images/home6/main-banner7.jpg);
+        image: url(../../../images/flyimages/bgmain.jpg);
     };
 }
-.banner-bg11 {
+.banner-bg22 {
     background: {
-        image: url(../../../images/home6/main-banner8.jpg);
+        image: url(../../../images/flyimages/bgmain4.jpg);
+        height: 50%
     };
 }
 .banner-section {
@@ -2132,7 +2135,7 @@ Categories Banner CSS
         left: 30px;
         transition: $transition;
         background-color: $white-color;
-        box-shadow: 1px 1px 3px rgba(136, 136, 136, .19);
+        box-shadow: 2px 2px 10px rgba(136, 136, 136, .79);
         padding: {
             top: 8px;
             bottom: 8px;
@@ -2617,7 +2620,7 @@ Products CSS
                         width: 40px;
                         border-radius: 50%;
                         line-height: 43px;
-                        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+                        box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, 0.75);
                         background-color: $white-color;
                         height: 40px;
 
@@ -2920,7 +2923,7 @@ Products CSS
                         width: 40px;
                         border-radius: 50%;
                         line-height: 43px;
-                        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+                        box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.75);
                         background-color: $white-color;
                         height: 40px;
 
@@ -3271,7 +3274,7 @@ Products CSS
             .list {
                 background-color: $white-color;
                 border-radius: 0;
-                box-shadow: 0 4px 10px 0 rgba(0,0,0,0.1);
+                box-shadow: 1px 4px 10px 0 rgba(0,0,0,0.75);
                 width: 100%;
                 margin: {
                     top: 0;
@@ -4740,7 +4743,7 @@ Offer CSS
     }
     &.bg-image3 {
         background: {
-            image: url(../../../images/home6/offer-bg3.jpg);
+            image: url(../../../images/flyimages/pexels-kindel-media-7667731.jpg);
         };
     }
 }
@@ -4847,7 +4850,7 @@ Offer CSS
     .content {
         position: absolute;
         right: 15px;
-        box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
+        box-shadow: 1px 8px 16px 0px rgba(146, 184, 255, 0.75);
         background-color: $white-color;
         border-radius: 5px;
         padding: 40px;
@@ -5050,7 +5053,7 @@ Testimonials CSS
 .single-testimonials-item {
     background-color: $white-color;
     padding: 35px 30px 95px;
-    box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
+    box-shadow: 2px 3px 20px rgba(161, 115, 115, 0.76);
     text-align: center;
     transition: $transition;
     position: relative;
@@ -5106,7 +5109,7 @@ Testimonials CSS
     &.active {
         &.center {
             .single-testimonials-item {
-                box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
+                box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.76);
                 margin-top: 0;
                 background-color: $main-color;
                 transition: $transition;
@@ -6321,7 +6324,7 @@ Modal CSS
                 margin: 0;
                 font-size: 25px;
                 width: 35px;
-                text-shadow: unset;
+                text-shadow: 0, 2px, 2px, rgba(0, 0, 0, 0.651)  ;
                 height: 35px;
 
                 &:hover {

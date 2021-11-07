@@ -1457,12 +1457,12 @@ Main Banner CSS
   background-image: url(../../../images/main-banner2.jpg);
 }
 
-.banner-bg10 {
-  background-image: url(../../../images/home6/main-banner7.jpg);
+.banner-bg21 {
+  background-image: url(/images/flyimages/bg-edible.jpg);
 }
 
-.banner-bg11 {
-  background-image: url(../../../images/home6/main-banner8.jpg);
+.banner-bg22 {
+  background-image: url(/images/flyimages/bg1.jpg);
 }
 
 .banner-section {
