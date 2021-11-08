@@ -20,12 +20,6 @@ function Signup() {
     const { signup } = useAuth();
     const [error, setError] = useState("")
 
-    // handleLogin = (e) => {
-    //     e.preventDefault();
-    //     this.props.userLogin();
-    //     Router.push('/');
-    // }
-
     async function handleSignup(e) {
         e.preventDefault();
 
@@ -58,23 +52,22 @@ function Signup() {
                         <form onSubmit={handleSignup} className="signup-form">
                             <div className="form-group">
                                 <label>First Name</label>
-                                <input 
-                                    type="text" className="form-control" ref={firstNameRef} />
+                                <input type="text" className="form-control" ref={firstNameRef} placeholder="First Name" />
                             </div>
 
                             <div className="form-group">
                                 <label>Last Name</label>
-                                <input type="text" className="form-control" ref={lastNameRef} />
+                                <input type="text" className="form-control" ref={lastNameRef} placeholder="Last Name" />
                             </div>
 
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" className="form-control" ref={emailRef} />
+                                <input type="email" className="form-control" ref={emailRef} placeholder="my@gmail.com" />
                             </div>
 
                             <div className="form-group">
                                 <label>Password</label>
-                                <input type="password" className="form-control" ref={passwordRef} />
+                                <input type="password" className="form-control" ref={passwordRef} placeholder="********" />
                             </div>
 
                             <button type="submit" className="default-btn">Signup</button>
