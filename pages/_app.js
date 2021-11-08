@@ -6,7 +6,6 @@ import { initStore } from '../store/reducers/cartReducer';
 import { ToastContainer } from 'react-toastify';
 import Layout from '../components/_App/Layout';
 import { checkUserLogin, addProducts } from '../store/actions/cartActions';
-import { AuthProvider } from '../context/AuthContext'
 
 const MyApp = ({Component, pageProps, store}) => {
     React.useEffect(() => {
@@ -16,11 +15,9 @@ const MyApp = ({Component, pageProps, store}) => {
     return (
         <Layout>
             <ToastContainer />
-            <AuthProvider>
-                <Provider store={store}>
-                    <Component {...pageProps} />
-                </Provider>
-            </AuthProvider>
+            <Provider store={store}>
+                <Component {...pageProps} />
+            </Provider>
         </Layout>
     );
 }
