@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { connect } from 'react-redux';
@@ -9,71 +9,91 @@ import PageBanner from '../components/Common/PageBanner';
 import FacilitySlider from '../components/Common/FacilitySlider';
 import InstagramFeed from '../components/Common/InstagramFeed';
 import Footer from '../components/Layouts/Footer';
+import { useAuth } from '../context/AuthContext';
+import { useRef } from 'react/cjs/react.development';
 
-class Signup extends Component {
+function Signup() {
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const { signup } = useAuth();
+    const [error, setError] = useState("")
 
-    handleLogin = (e) => {
+    // handleLogin = (e) => {
+    //     e.preventDefault();
+    //     this.props.userLogin();
+    //     Router.push('/');
+    // }
+
+    async function handleSignup(e) {
         e.preventDefault();
-        this.props.userLogin();
-        Router.push('/');
+
+        try {
+          setError("");
+          await signup(emailRef.current.value, passwordRef.current.value);
+          Router.push('/login');
+        } catch {
+          setError("Failed to create an account")
+        }
+
     }
 
-    render() {
-        return (
-            <React.Fragment>
-               <TopHeader />
-                <Navbar />
-                <PageBanner 
-                    pageTitle="My Account" 
-                    homePageUrl="/" 
-                    homePageText="Home" 
-                    activePageText="Login" 
-                /> 
+    return (
+        <React.Fragment>
+            <TopHeader />
+            <Navbar />
+            <PageBanner 
+                pageTitle="My Account" 
+                homePageUrl="/" 
+                homePageText="Home" 
+                activePageText="Sign Up" 
+            /> 
 
-                <section className="signup-area ptb-100">
-                    <div className="container">
-                        <div className="signup-content">
-                            <h2>Create an Account</h2>
+            <section className="signup-area ptb-100">
+                <div className="container">
+                    <div className="signup-content">
+                        <h2>Create an Account</h2>
 
-                            <form onSubmit={this.handleLogin} className="signup-form">
-                                <div className="form-group">
-                                    <label>First Name</label>
-                                    <input type="text" className="form-control" id="fname" name="fname" />
-                                </div>
+                        <form onSubmit={handleSignup} className="signup-form">
+                            <div className="form-group">
+                                <label>First Name</label>
+                                <input 
+                                    type="text" className="form-control" ref={firstNameRef} />
+                            </div>
 
-                                <div className="form-group">
-                                    <label>Last Name</label>
-                                    <input type="text" className="form-control" id="lname" name="lname" />
-                                </div>
+                            <div className="form-group">
+                                <label>Last Name</label>
+                                <input type="text" className="form-control" ref={lastNameRef} />
+                            </div>
 
-                                <div className="form-group">
-                                    <label>Email</label>
-                                    <input type="email" className="form-control" id="name" name="name" />
-                                </div>
+                            <div className="form-group">
+                                <label>Email</label>
+                                <input type="email" className="form-control" ref={emailRef} />
+                            </div>
 
-                                <div className="form-group">
-                                    <label>Password</label>
-                                    <input type="password" className="form-control" id="password" name="password" />
-                                </div>
+                            <div className="form-group">
+                                <label>Password</label>
+                                <input type="password" className="form-control" ref={passwordRef} />
+                            </div>
 
-                                <button type="submit" className="default-btn">Signup</button>
-                                
-                                <div className="text-center">
-                                    <Link href="/">
-                                        <a className="return-store">or Return to Store</a>
-                                    </Link>
-                                </div>
-                            </form>
-                        </div>
+                            <button type="submit" className="default-btn">Signup</button>
+                            
+                            <div className="text-center">
+                                <Link href="/">
+                                    <a className="return-store">or Return to Store</a>
+                                </Link>
+                            </div>
+                        </form>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <FacilitySlider />
-                <InstagramFeed />
-                <Footer />
-            </React.Fragment>
-        );
-    }
+            <FacilitySlider />
+            <InstagramFeed />
+            <Footer />
+        </React.Fragment>
+    );
 }
 
 const mapDispatchToProps = (dispatch) => {
