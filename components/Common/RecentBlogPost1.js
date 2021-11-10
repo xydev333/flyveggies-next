@@ -8,7 +8,7 @@ class RecentBlogPost extends Component {
                 <div className="container">
                     <div className="section-title">
                         <span className="sub-title">Recent Story</span>
-                        <h2>From The Fly Veggies Blog</h2>
+                        <h2>From The Livani Blog</h2>
                     </div>
 
                     <div className="row">
@@ -17,20 +17,20 @@ class RecentBlogPost extends Component {
                                 <div className="post-image">
                                     <Link href="/single-blog-1">
                                         <a>
-                                            <img src={require("../../images/flyimages/blog9.jpg")} alt="image" />
+                                            <img src={require("../../images/blog/blog1.jpg")} alt="image" />
                                         </a>
                                     </Link>
 
                                     <div className="date">
-                                        <span>November 25, 2021</span>
+                                        <span>January 29, 2020</span>
                                     </div>
                                 </div>
 
                                 <div className="post-content">
-                                    <span className="category">Mister Nice Guy Bud</span>
+                                    <span className="category">Ideas</span>
                                     <h3>
                                         <Link href="/single-blog-1">
-                                            <a>A chat over Mister Nice Guy</a>
+                                            <a>The #1 eCommerce blog to grow your business</a>
                                         </Link>
                                     </h3>
 
@@ -46,20 +46,20 @@ class RecentBlogPost extends Component {
                                 <div className="post-image">
                                     <Link href="/single-blog-1">
                                         <a>
-                                            <img src={require("../../images/flyimages/blog10Recent.jpg")} alt="image" />
+                                            <img src={require("../../images/blog/blog2.jpg")} alt="image" />
                                         </a>
                                     </Link>
 
                                     <div className="date">
-                                        <span>November 25, 2021</span>
+                                        <span>January 29, 2020</span>
                                     </div>
                                 </div>
 
                                 <div className="post-content">
-                                    <span className="category">Buds For Life</span>
+                                    <span className="category">Advice</span>
                                     <h3>
                                         <Link href="/single-blog-1">
-                                            <a>A chat over Mister Nice Guy</a>
+                                            <a>Latest ecommerce trend: The rise of shoppable posts</a>
                                         </Link>
                                     </h3>
                                     
@@ -75,20 +75,20 @@ class RecentBlogPost extends Component {
                                 <div className="post-image">
                                     <Link href="/single-blog-1">
                                         <a>
-                                            <img src={require("../../images/flyimages/blog11.jpg")} alt="image" />
+                                            <img src={require("../../images/blog/blog3.jpg")} alt="image" />
                                         </a>
                                     </Link>
 
                                     <div className="date">
-                                        <span>November 25, 2021</span>
+                                        <span>January 29, 2020</span>
                                     </div>
                                 </div>
 
                                 <div className="post-content">
-                                    <span className="category">Baba Ganush</span>
+                                    <span className="category">Social</span>
                                     <h3>
                                         <Link href="/single-blog-1">
-                                            <a>The Giving Bud</a>
+                                            <a>Building eCommerce wave: Social media shopping</a>
                                         </Link>
                                     </h3>
                                     

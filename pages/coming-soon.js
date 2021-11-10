@@ -11,7 +11,7 @@ class ComingSoon extends Component {
     };
 
     commingSoonTime = () => {
-        let endTime = new Date("August 23, 2022 17:00:00 PDT");
+        let endTime = new Date("November 19, 2021 17:00:00 PDT");
         let endTimeParse = (Date.parse(endTime)) / 1000;
         let now = new Date();
         let nowParse = (Date.parse(now) / 1000);
@@ -51,7 +51,7 @@ class ComingSoon extends Component {
                             <div className="coming-soon-content">
                                 <Link href="/">
                                     <a className="logo">
-                                        <img src={require("../images/logo.png")} alt="image" />
+                                        <img src={require("../images/flyveggieslogo.png")} alt="image" />
                                     </a>
                                 </Link>
 

@@ -32,7 +32,7 @@ class TopHeaderTwo extends Component {
                             <div className="col-lg-4 col-md-12">
                                 <ul className="header-contact-info">
                                     <li>Welcome to Fly Veggies!</li>
-                                    <li>Call:317-416-7142</li>
+                                    <li>Call:317-649-0110</li>
 
                                     <li>
                                         <div className="dropdown language-switcher d-inline-block">
@@ -84,7 +84,7 @@ class TopHeaderTwo extends Component {
 
                             <div className="col-lg-4 col-md-12">
                                 <div className="top-header-discount-info">
-                                    <p><strong>25% OFF</strong> Hazy Promo Items<Link href="#"><a>Discover Now!</a></Link></p>
+                                    <p><strong>25% OFF</strong> Hazy Promo Items <Link href="#"><a>Discover Now!</a></Link></p>
                                 </div>
                             </div>
 
@@ -102,14 +102,6 @@ class TopHeaderTwo extends Component {
                                         <Link href="#toggleModalWishlist">
                                             <a onClick={this.toggleModalWishlist}>
                                                 <i className='bx bx-heart'></i> Wishlist
-                                            </a>
-                                        </Link>
-                                    </li>
-
-                                    <li>
-                                        <Link href="/compare">
-                                            <a>
-                                                <i className='bx bx-shuffle'></i> Compare
                                             </a>
                                         </Link>
                                     </li>

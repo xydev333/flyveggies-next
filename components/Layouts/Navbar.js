@@ -5,7 +5,7 @@ import SearchModal from '../Modals/SearchModal';
 import ShoppingCartModal from '../Modals/ShoppingCartModal';
 import SidebarModal from '../Modals/SidebarModal';
 
-class Navbar extends Component {
+class NavbarTwo extends Component {
     // Navbar 
     _isMounted = false;
     state = {
@@ -64,11 +64,12 @@ class Navbar extends Component {
             <React.Fragment>
                 <div id="navbar" className="navbar-area">
                     <div className="main-nav">
-                        <div className="container">
-                            <nav className="navbar navbar-expand-md navbar-light">
+                        <div className="container-fluid bg-success shadow-lg">
+                            <nav className="navbar navbar-expand-md navbar-dark">
+                                <h4 className="display 4 text-white">Fly Veggies</h4>
                                 <Link href="/">
-                                    <a className="navbar-brand">
-                                        <img src={require("../../images/logo.png")} alt="logo" />
+                                    <a className="navbar-brand ml-3">
+                                        <img src={require("../../images/flyimages/flyveggieslogo.png")} alt="logo" height="50px" width="50px" />
                                     </a>
                                 </Link>
 
@@ -87,11 +88,11 @@ class Navbar extends Component {
                                 </button>
 
                                 <div className={classNameOne} id="navbarSupportedContent">
-                                    <ul className="navbar-nav">
-                                        <li className="nav-item">
-                                            <Link href="#">
-                                                <a className="nav-link">
-                                                    Home <i className='bx bx-chevron-down'></i>
+                                    <ul className="navbar-nav ">
+                                        <li className="nav-item ">
+                                            <Link href="/">
+                                                <a className="nav-link text-white">
+                                                    Home 
                                                 </a>
                                             </Link>
 
@@ -129,7 +130,7 @@ class Navbar extends Component {
                                                 <li className="nav-item">
                                                     <Link href="/covid19" activeClassName="active">
                                                         <a className="nav-link">
-                                                            Covid-19 Store
+                                                            Home
                                                             <span>New</span>
                                                         </a>
                                                     </Link>
@@ -173,9 +174,9 @@ class Navbar extends Component {
                                             </ul>
                                         </li>
 
-                                        <li className="nav-item megamenu">
+                                        <li className="nav-item ">
                                             <Link href="#">
-                                                <a className="nav-link">
+                                                <a className="nav-link text-white">
                                                     Shop <i className='bx bx-chevron-down'></i>
                                                 </a>
                                             </Link>
@@ -185,101 +186,13 @@ class Navbar extends Component {
                                                     <div className="container">
                                                         <div className="row">
                                                             <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles</h6>
-
                                                                 <ul className="megamenu-submenu">
                                                                     <li>
-                                                                        <Link href="/products-left-sidebar" activeClassName="active">
-                                                                            <a>Left Sidebar</a>
+                                                                        <Link href="/cart" activeClassName="active">
+                                                                            <a>Store</a>
                                                                         </Link>
                                                                     </li>
 
-                                                                    <li>
-                                                                        <Link href="/products-left-sidebar-with-categories" activeClassName="active">
-                                                                            <a>
-                                                                                Left Sidebar With Categories
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-1" activeClassName="active">
-                                                                            <a>Categories (2 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-4" activeClassName="active">
-                                                                            <a>Categories Full Width (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles 2</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-right-sidebar" activeClassName="active">
-                                                                            <a>Right Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-right-sidebar-with-categories" activeClassName="active">
-                                                                            <a>Right Sidebar With Categories</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-2" activeClassName="active">
-                                                                            <a>Categories Fullwidth</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/lookbook-1" activeClassName="active">
-                                                                            <a>Grid (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles 3</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-without-sidebar" activeClassName="active">
-                                                                            <a>Without Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-sidebar-fullwidth" activeClassName="active">
-                                                                            <a>With Sidebar Full Width</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-3" activeClassName="active">
-                                                                            <a>Categories (1 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/lookbook-2" activeClassName="active">
-                                                                            <a>Grid Full Width (4 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Product Pages</h6>
-
-                                                                <ul className="megamenu-submenu">
                                                                     <li>
                                                                         <Link href="/cart" activeClassName="active">
                                                                             <a>Cart</a>
@@ -298,11 +211,7 @@ class Navbar extends Component {
                                                                         </Link>
                                                                     </li>
                                                                     
-                                                                    <li>
-                                                                        <Link href="/sizing-guide" activeClassName="active">
-                                                                            <a>Sizing Guide</a>
-                                                                        </Link>
-                                                                    </li>
+                                                                   
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -311,484 +220,27 @@ class Navbar extends Component {
                                             </ul>
                                         </li>
 
-                                        <li className="nav-item megamenu">
-                                            <Link href="#">
-                                                <a className="nav-link">
-                                                    Pages <i className='bx bx-chevron-down'></i>
+                                       <li className="nav-item megamenu">
+                                            <Link href="/about">
+                                                <a className="nav-link text-white">
+                                                    About Us 
                                                 </a>
                                             </Link>
-
-                                            <ul className="dropdown-menu">
-                                                <li className="nav-item">
-                                                    <div className="container">
-                                                        <div className="row">
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Pages</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/about" activeClassName="active">
-                                                                            <a>About Us</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/customer-service" activeClassName="active">
-                                                                            <a>Customer Service</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/login" activeClassName="active">
-                                                                            <a>Login</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/signup" activeClassName="active">
-                                                                            <a>Signup</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/faqs" activeClassName="active">
-                                                                            <a>FAQ's</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/error-404" activeClassName="active">
-                                                                            <a>404 Error</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/coming-soon" activeClassName="active">
-                                                                            <a>Coming Soon</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/track-order" activeClassName="active">
-                                                                            <a>Tracking Order</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/contact" activeClassName="active">
-                                                                            <a>Contact Us</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Gallery</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/gallery-1" activeClassName="active">
-                                                                            <a>Grid (2 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/gallery-2" activeClassName="active">
-                                                                            <a>Grid (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/gallery-3" activeClassName="active">
-                                                                            <a>Grid Full Width (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/gallery-4" activeClassName="active">
-                                                                            <a>Grid Full Width (4 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-
-                                                                <h6 className="submenu-title">My Account</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/login" activeClassName="active">
-                                                                            <a>Login</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/signup" activeClassName="active">
-                                                                            <a>Signup</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Categories</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/categories-1" activeClassName="active">
-                                                                            <a>Categories (2 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-2" activeClassName="active">
-                                                                            <a>Categories Fullwidth</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-3" activeClassName="active">
-                                                                            <a>Categories (1 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-4" activeClassName="active">
-                                                                            <a>Categories Full Width (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-
-                                                                <h6 className="submenu-title">Lookbook</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/lookbook-1" activeClassName="active">
-                                                                            <a>Grid (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/lookbook-2" activeClassName="active">
-                                                                            <a>Grid Full Width (4 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/cart" activeClassName="active">
-                                                                            <a>Cart</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/checkout" activeClassName="active">
-                                                                            <a>Cehckout</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/compare" activeClassName="active">
-                                                                            <a>Compare</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/login" activeClassName="active">
-                                                                            <a>My Account</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/sizing-guide" activeClassName="active">
-                                                                            <a>Sizing Guide</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/track-order" activeClassName="active">
-                                                                            <a>Tracking Order</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/customer-service" activeClassName="active">
-                                                                            <a>Customer Service</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/contact" activeClassName="active">
-                                                                            <a>Contact Us</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+{/*delete start*/} 
                                         </li>
 
                                         <li className="nav-item megamenu">
-                                            <Link href="#">
-                                                <a className="nav-link">
-                                                    Women's <i className='bx bx-chevron-down'></i>
+                                            <Link href="/contact">
+                                                <a className="nav-link text-white">
+                                                    Contact Us 
                                                 </a>
                                             </Link>
-
-                                            <ul className="dropdown-menu">
-                                                <li className="nav-item">
-                                                    <div className="container">
-                                                        <div className="row">
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-left-sidebar" activeClassName="active">
-                                                                            <a>Left Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-left-sidebar-with-categories" activeClassName="active">
-                                                                            <a>
-                                                                                Left Sidebar With Categories
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-1" activeClassName="active">
-                                                                            <a>Categories (2 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-4" activeClassName="active">
-                                                                            <a>Categories Full Width (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles 2</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-right-sidebar" activeClassName="active">
-                                                                            <a>Right Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-right-sidebar-with-categories" activeClassName="active">
-                                                                            <a>Right Sidebar With Categories</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-2" activeClassName="active">
-                                                                            <a>Categories Fullwidth</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/lookbook-1" activeClassName="active">
-                                                                            <a>Grid (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles 3</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-without-sidebar" activeClassName="active">
-                                                                            <a>Without Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-sidebar-fullwidth" activeClassName="active">
-                                                                            <a>With Sidebar Full Width</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-3" activeClassName="active">
-                                                                            <a>Categories (1 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/lookbook-2" activeClassName="active">
-                                                                            <a>Grid Full Width (4 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <div className="aside-trending-products">
-                                                                            <img src={require("../../images/categories/categories3.jpg")} alt="image" />
-
-                                                                            <div className="category">
-                                                                                <h4>Popular Products</h4>
-                                                                            </div>
-
-                                                                            <Link href="#">
-                                                                                <a className="link-btn"></a>
-                                                                            </Link>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
- 
-                                        <li className="nav-item megamenu">
-                                            <Link href="#">
-                                                <a className="nav-link">
-                                                    Men's <i className='bx bx-chevron-down'></i>
-                                                </a>
-                                            </Link>
-
-                                            <ul className="dropdown-menu">
-                                                <li className="nav-item">
-                                                    <div className="container">
-                                                        <div className="row">
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-left-sidebar" activeClassName="active">
-                                                                            <a>Left Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-left-sidebar-with-categories" activeClassName="active">
-                                                                            <a>
-                                                                                Left Sidebar With Categories
-                                                                            </a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-1" activeClassName="active">
-                                                                            <a>Categories (2 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-4" activeClassName="active">
-                                                                            <a>Categories Full Width (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles 2</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-right-sidebar" activeClassName="active">
-                                                                            <a>Right Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-right-sidebar-with-categories" activeClassName="active">
-                                                                            <a>Right Sidebar With Categories</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-2" activeClassName="active">
-                                                                            <a>Categories Fullwidth</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/lookbook-1" activeClassName="active">
-                                                                            <a>Grid (3 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <h6 className="submenu-title">Shop Styles 3</h6>
-
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <Link href="/products-without-sidebar" activeClassName="active">
-                                                                            <a>Without Sidebar</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/products-sidebar-fullwidth" activeClassName="active">
-                                                                            <a>With Sidebar Full Width</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/categories-3" activeClassName="active">
-                                                                            <a>Categories (1 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <Link href="/lookbook-2" activeClassName="active">
-                                                                            <a>Grid Full Width (4 in Row)</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div className="col">
-                                                                <ul className="megamenu-submenu">
-                                                                    <li>
-                                                                        <div className="aside-trending-products">
-                                                                            <img src={require("../../images/categories/categories4.jpg")} alt="image" />
-
-                                                                            <div className="category">
-                                                                                <h4>Popular Products</h4>
-                                                                            </div>
-
-                                                                            <Link href="#">
-                                                                                <a className="link-btn"></a>
-                                                                            </Link>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
                                         </li>
  
                                         <li className="nav-item">
                                             <Link href="#">
-                                                <a className="nav-link">
-                                                    Blog <i className='bx bx-chevron-down'></i>
+                                                <a className="nav-link text-white">
+                                                    Blog 
                                                 </a>
                                             </Link>
 
@@ -917,4 +369,4 @@ const mapStateToProps = (state)=>{
     }
 }
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps)(NavbarTwo);
