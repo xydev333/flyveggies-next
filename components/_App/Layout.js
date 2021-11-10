@@ -12,12 +12,13 @@ const Layout = ({children}) => {
     return(
         <React.Fragment>
             <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <title>Livani - React Next eCommerce Template</title>
-                <meta name="description" content="Livani - React Next eCommerce Template. This has been built with React, Next.js, Express.js, and ES6+" />
-                <meta name="og:title" property="og:title" content="Livani - React Next eCommerce Template"></meta>
-                <meta name="twitter:card" content="Livani - React Next eCommerce Template"></meta>
-                <link rel="canonical" href="https://livani-react.envytheme.com/"></link>
-                <meta property="og:image" content="https://demaxin.s3.ap-south-1.amazonaws.com/cd19-2-1589216093113.jpg" />
+                <meta name="description" content="Flyveggies - Dispensery" />
+                <meta name="og:title" property="og:title" content="Fly Veggies - Dispensery"></meta>
+                <meta name="twitter:card" content="Flyveggies - Dispensery"></meta>
+                <link rel="canonical" href="https://flyveggies.com/"></link>
+                <meta property="og:image" content="https://flyveggies.com/flyimages/flyveggieslogo.png" />
             </Head>
             {loader ? 'Loading' : children}
             <GoTop scrollStepInPx="100" delayInMs="10.50" />

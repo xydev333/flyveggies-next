@@ -27,25 +27,25 @@ class About extends Component {
                         <div className="row align-items-center">
                             <div className="col-lg-6 col-md-12">
                                 <div className="about-image">
-                                    <img src={require("../images/about/about1.jpg")} className="shadow" alt="image" />
-                                    <img src={require("../images/about/about2.jpg")} className="shadow" alt="image" />
+                                    <img src={require("../images/flyimages/about1.jpg")} className="shadow" alt="image" />
+                                    <img src={require("../images/flyimages/about2.jpg")} className="shadow" alt="image" />
                                 </div>
                             </div>
 
                             <div className="col-lg-6 col-md-12">
                                 <div className="about-content">
                                     <span className="sub-title">About Us</span>
-                                    <h2>Linava Trusted Online Shopping Site in the World</h2>
-                                    <h6>Linava.com offers you flexible and responsive shopping experience.</h6>
-                                    <p><strong>Linava</strong> is an eCommerce website which features millions of products, i.e. clothes, shoes, bags, electronic items and much more, with all at incredible prices.</p>
-                                    <p>One of the most popular on the web is shopping. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <h2>Fly Veggies Trusted Online Shopping Site in the World</h2>
+                                    <h6>FlyVeggies.com offers you flexible and responsive shopping experience.</h6>
+                                    <p><strong>Linava</strong> is an eCommerce website which features </p>
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
                                     <div className="features-text">
                                         <h5>
                                             <i className='bx bx-planet'></i> 
-                                            Ships to more than 10 countries and regions
+                                            "An out of this world Experience"
                                         </h5>
-                                        <p>We provide customers with a hassle-free and worry-free international shopping experience from buying to delivery.</p>
+                                        <p>We provide customers with a hassle-free and worry-free shopping experience from buying to trying.</p>
                                     </div>
                                 </div>
                             </div>
@@ -59,10 +59,10 @@ class About extends Component {
                                         <p>One of the most popular on the web is shopping.</p>
                                         
                                         <ul className="features-list">
-                                            <li><i className='bx bx-check'></i> People like Livani</li>
-                                            <li><i className='bx bx-check'></i> World's finest Livani</li>
-                                            <li><i className='bx bx-check'></i> The original Livani</li>
-                                            <li><i className='bx bx-check'></i> We trust Livani</li>
+                                            <li><i className='bx bx-check'></i> People like Flyveggies</li>
+                                            <li><i className='bx bx-check'></i> World's finest FlyVeggies</li>
+                                            <li><i className='bx bx-check'></i> The original FlyVeggies</li>
+                                            <li><i className='bx bx-check'></i> We trust FlyVeggies</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -73,10 +73,10 @@ class About extends Component {
                                         <p>The best of both worlds. Store and web.</p>
                                         
                                         <ul className="features-list">
-                                            <li><i className='bx bx-check'></i> Always in style!</li>
-                                            <li><i className='bx bx-check'></i> Discover your favorite shopping</li>
-                                            <li><i className='bx bx-check'></i> Find yourself</li>
-                                            <li><i className='bx bx-check'></i> Feel-good shopping</li>
+                                            <li><i className='bx bx-check'></i> #Homegrown!</li>
+                                            <li><i className='bx bx-check'></i> Honesty and truth</li>
+                                            <li><i className='bx bx-check'></i> Loyalty to process</li>
+                                            <li><i className='bx bx-check'></i> Feel-good Atmosphere</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -84,12 +84,12 @@ class About extends Component {
                                 <div className="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
                                     <div className="about-text">
                                         <h3>Our Promise</h3>
-                                        <p>Rediscover a great shopping tradition</p>
+                                        <p>Rediscover Products You Love</p>
                                         
                                         <ul className="features-list">
-                                            <li><i className='bx bx-check'></i> Get better shopping</li>
-                                            <li><i className='bx bx-check'></i> Love shopping again</li>
-                                            <li><i className='bx bx-check'></i> Online shopping.</li>
+                                            <li><i className='bx bx-check'></i> All Natural</li>
+                                            <li><i className='bx bx-check'></i> Raised With Love</li>
+                                            <li><i className='bx bx-check'></i> Upfront Pricing</li>
                                             <li><i className='bx bx-check'></i> Shopping for all seasons</li>
                                         </ul>
                                     </div>

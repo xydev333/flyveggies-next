@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { userLogout } from '../../store/actions/cartActions';
 import WishlistModal from '../Modals/WishlistModal';
 
-class TopHeader extends Component {
+class TopHeaderTwo extends Component {
 
     state = {
         WishlistModal: false
@@ -27,12 +27,12 @@ class TopHeader extends Component {
         return (
             <React.Fragment>
                 <div className="top-header">
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="row align-items-center">
-                            <div className="col-lg-6 col-md-12">
+                            <div className="col-lg-4 col-md-12">
                                 <ul className="header-contact-info">
-                                    <li>Welcome to Livani</li>
-                                    <li>Call: +1-541-754-3010</li>
+                                    <li>Welcome to Fly Veggies!</li>
+                                    <li>Call:317-649-0110</li>
 
                                     <li>
                                         <div className="dropdown language-switcher d-inline-block">
@@ -82,7 +82,13 @@ class TopHeader extends Component {
                                 </ul>
                             </div>
 
-                            <div className="col-lg-6 col-md-12">
+                            <div className="col-lg-4 col-md-12">
+                                <div className="top-header-discount-info">
+                                    <p><strong>25% OFF</strong> Hazy Promo Items <Link href="#"><a>Discover Now!</a></Link></p>
+                                </div>
+                            </div>
+
+                            <div className="col-lg-4 col-md-12">
                                 <ul className="header-top-menu">
                                     <li>
                                         <Link href="/login">
@@ -96,14 +102,6 @@ class TopHeader extends Component {
                                         <Link href="#toggleModalWishlist">
                                             <a onClick={this.toggleModalWishlist}>
                                                 <i className='bx bx-heart'></i> Wishlist
-                                            </a>
-                                        </Link>
-                                    </li>
-
-                                    <li>
-                                        <Link href="/compare">
-                                            <a>
-                                                <i className='bx bx-shuffle'></i> Compare
                                             </a>
                                         </Link>
                                     </li>
@@ -151,4 +149,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(TopHeaderTwo);

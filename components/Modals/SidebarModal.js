@@ -27,7 +27,7 @@ class SidebarModal extends Component {
                                 <h3>About The Store</h3>
 
                                 <div className="about-the-store">
-                                    <p>One of the most popular on the web is shopping. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p>One of the most popular Dispenseries on the web Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                     
                                     <ul className="sidebar-contact-info">
                                         <li>
@@ -40,7 +40,7 @@ class SidebarModal extends Component {
                                         </li>
                                         <li>
                                             <i className='bx bx-envelope'></i> 
-                                            hello@livani.com
+                                            hello@flyveggies.com
                                         </li>
                                     </ul>
                                 </div>
@@ -91,7 +91,7 @@ class SidebarModal extends Component {
                                     <li>
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/products/img1.jpg")} alt="image" />
+                                                <img src={require("../../images/flyimages/products/img1.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </li>
@@ -99,7 +99,7 @@ class SidebarModal extends Component {
                                     <li>
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/products/img2.jpg")} alt="image" />
+                                                <img src={require("../../images/flyimages/products/img2.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </li>
@@ -107,7 +107,7 @@ class SidebarModal extends Component {
                                     <li>
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/products/img3.jpg")} alt="image" />
+                                                <img src={require("../../images/flyimages/products/img3.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </li>
@@ -115,7 +115,7 @@ class SidebarModal extends Component {
                                     <li>
                                         <Link href="#">
                                             <a>
-                                                <img src={require("../../images/products/img4.jpg")} alt="image" />
+                                                <img src={require("../../images/flyimages/products/img4.jpg")} alt="image" />
                                             </a>
                                         </Link>
                                     </li>

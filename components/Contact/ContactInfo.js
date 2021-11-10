@@ -15,11 +15,11 @@ class ContactInfo extends Component {
                     </li>
                     <li>
                         <i className='bx bx-phone-call'></i> 
-                        Call Us: +1-541-754-3010
+                        Call Us: +317-649-0110
                     </li>
                     <li>
                         <i className='bx bx-envelope'></i> 
-                        Email Us: hello@livani.com
+                        Email Us: hello@FlyVeggies.com
                     </li>
                     <li>
                         <i className='bx bx-microphone'></i> 

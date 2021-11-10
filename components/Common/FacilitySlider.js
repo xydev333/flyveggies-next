@@ -55,22 +55,16 @@ class FacilitySlider extends Component {
                             <div className="icon">
                                 <i className='flaticon-tracking'></i>
                             </div>
-                            <h3>Free Shipping Worldwide</h3>
+                            <h3>Fast Shipping Worldwide</h3>
                         </div>
 
                         <div className="single-facility-box">
                             <div className="icon">
                                 <i className='flaticon-return'></i>
                             </div>
-                            <h3>Easy Return Policy</h3>
+                            <h3>Discret Packaging</h3>
                         </div>
 
-                        <div className="single-facility-box">
-                            <div className="icon">
-                                <i className='flaticon-shuffle'></i>
-                            </div>
-                            <h3>7 Day Exchange Policy</h3>
-                        </div>
 
                         <div className="single-facility-box">
                             <div className="icon">
@@ -90,14 +84,14 @@ class FacilitySlider extends Component {
                             <div className="icon">
                                 <i className='flaticon-location'></i>
                             </div>
-                            <h3>Track Your Order</h3>
+                            <h3>Mobile Friendly</h3>
                         </div>
 
                         <div className="single-facility-box">
                             <div className="icon">
                                 <i className='flaticon-customer-service'></i>
                             </div>
-                            <h3>24/7 Customer Support</h3>
+                            <h3>Got question, Call Us!</h3>
                         </div>
                     </OwlCarousel> : ''}
                 </div>

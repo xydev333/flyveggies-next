@@ -49,7 +49,7 @@ class InstagramFeed extends Component {
                 <div className="container-fluid">
                     <div className="instagram-title">
                         <a href="#" target="_blank">
-                            <i className='bx bxl-instagram'></i> Follow us on @livani
+                            <i className='bx bxl-instagram'></i> Follow us on @FlyVeggies
                         </a>
                     </div>
 
@@ -58,7 +58,8 @@ class InstagramFeed extends Component {
                         {...options}
                     > 
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta1.jpg")} alt="image" />
+                        <img src={require("../../images/home6/instagram/insta1.jpg")} alt="image" />
+
 
                             <i className='bx bxl-instagram'></i>
 
@@ -68,7 +69,7 @@ class InstagramFeed extends Component {
                         </div>
 
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta2.jpg")} alt="image" />
+                            <img src={require("../../images/flyimages/bgleaf3.jpg")} alt="image" />
 
                             <i className='bx bxl-instagram'></i>
 
@@ -78,17 +79,7 @@ class InstagramFeed extends Component {
                         </div>
 
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta3.jpg")} alt="image" />
-
-                            <i className='bx bxl-instagram'></i>
-
-                            <Link href="#">
-                                <a target="_blank" className="link-btn"></a>
-                            </Link>
-                        </div>
-                        
-                        <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta4.jpg")} alt="image" />
+                            <img src={require("../../images/flyimages/insta3.jpg")} alt="image" />
 
                             <i className='bx bxl-instagram'></i>
 
@@ -98,7 +89,7 @@ class InstagramFeed extends Component {
                         </div>
                         
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta5.jpg")} alt="image" />
+                            <img src={require("../../images/flyimages/insta4.jpg")} alt="image" />
 
                             <i className='bx bxl-instagram'></i>
 
@@ -108,7 +99,7 @@ class InstagramFeed extends Component {
                         </div>
                         
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta6.jpg")} alt="image" />
+                            <img src={require("../../images/flyimages/insta5.jpg")} alt="image" />
 
                             <i className='bx bxl-instagram'></i>
 
@@ -118,7 +109,7 @@ class InstagramFeed extends Component {
                         </div>
                         
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta7.jpg")} alt="image" />
+                            <img src={require("../../images/flyimages/insta6.jpg")} alt="image" />
 
                             <i className='bx bxl-instagram'></i>
 
@@ -128,7 +119,7 @@ class InstagramFeed extends Component {
                         </div>
                         
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta8.jpg")} alt="image" />
+                            <img src={require("../../images/flyimages/insta7.jpg")} alt="image" />
 
                             <i className='bx bxl-instagram'></i>
 
@@ -138,7 +129,17 @@ class InstagramFeed extends Component {
                         </div>
                         
                         <div className="single-instagram-post">
-                            <img src={require("../../images/home6/instagram/insta9.jpg")} alt="image" />
+                            <img src={require("../../images/flyimages/insta8.jpg")} alt="image" />
+
+                            <i className='bx bxl-instagram'></i>
+
+                            <Link href="#">
+                                <a target="_blank" className="link-btn"></a>
+                            </Link>
+                        </div>
+                        
+                        <div className="single-instagram-post">
+                            <img src={require("../../images/flyimages/insta9.jpg")} alt="image" />
 
                             <i className='bx bxl-instagram'></i>
 

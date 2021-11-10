@@ -43,10 +43,11 @@ class Banner extends React.Component{
                                         <div className="col-lg-6 col-md-12">
                                             <div className="banner-content">
                                                 <div className="line"></div>
-                                                <span className="sub-title">Best Seller</span>
+                                                <span className="sub-title text-primary">Best Seller</span>
                                                 <h1>THC Gummy Bears</h1>
 
-                                                <p>The Delicious & strong, Gummy Bears! Eceryone favorite is back! Made with our own local strain just like most of our products!</p>
+                                                <h5 className="text  text-Dark text-bold shadow-sm">The Delicious,Strong,and Yummy Gummy Bears! 
+                                                <br/>Made with our own local strain.</h5>
 
                                                 <div className="btn-box">
                                                     <Link href="/products-left-sidebar">
@@ -69,10 +70,10 @@ class Banner extends React.Component{
                                         <div className="col-lg-6 col-md-12">
                                             <div className="banner-content">
                                                 <div className="line"></div>
-                                                <span className="sub-title">Todays Medicine is Green</span>
-                                                <h1>Marijuana: Todays Medicine</h1>
+                                                <span className="sub-title text text-light">Todays Medicine is Green</span>
+                                                <h1 className="text text-light">Marijuana: Todays Medicine</h1>
 
-                                                <p>Nowadays every one is taking to a new type of medicine! Frustrated with the pills and needle of todays big Pharma we set out to make that medicine right here in the USA!</p>
+                                                <p className=" text text-light ">Nowadays every one is taking to a new type of medicine! Frustrated with the pills and needle of todays big Pharma we set out to make that medicine right here in the USA!</p>
 
                                                 <div className="btn-box">
                                                     <Link href="/products-left-sidebar">
