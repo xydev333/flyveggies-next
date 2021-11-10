@@ -36,7 +36,7 @@ const HomeTwo = ({ products }) => {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.filter( product => product.type == 'Women Clothes' )
+        products: state.cartReducer.products.filter( product => product.type == 'Women Clothes' )
     }
 }
 

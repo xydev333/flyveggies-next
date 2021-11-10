@@ -913,7 +913,7 @@ class Navbar extends Component {
 
 const mapStateToProps = (state)=>{
     return{
-        products: state.addedItems
+        products: state.cartReducer.addedItems
     }
 }
 

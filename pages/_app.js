@@ -2,7 +2,7 @@ import '../styles.scss';
 import React from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
-import { initStore } from '../store/reducers/cartReducer';
+import { initStore } from '../store/reducers/index.js';
 import { ToastContainer } from 'react-toastify';
 import Layout from '../components/_App/Layout';
 import { checkUserLogin, addProducts } from '../store/actions/cartActions';

@@ -32,7 +32,7 @@ const Grocery = ({ products }) => {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.filter( product => product.type == 'grocery' )
+        products: state.cartReducer.products.filter( product => product.type == 'grocery' )
     }
 }
 

@@ -10629,3 +10629,17 @@ Products Details Area CSS
         margin-top: 25px;
     }
 }
+
+.AuthStatusMessage {
+    width: 30%;
+    background-color: rgb(72, 255, 0);
+    height: 40px;
+    font-size: 20px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 10px;
+}

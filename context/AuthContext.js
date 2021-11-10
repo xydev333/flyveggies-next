@@ -18,9 +18,14 @@ export function AuthProvider({ children }) {
                 url: window.location.protocol + "//" + window.location.host + '/login',
               });
               auth.signOut();
-              alert("Verification Email sent");
             })
-            .catch(alert);
+            .catch(error => {
+              console.log(error.code);
+              switch(error.code) {
+                case 'auth/email-already-in-use': 
+                  break;
+              }
+            });
   }
 
   function login(email, password) {

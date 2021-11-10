@@ -28,7 +28,7 @@ const Furniture = ({ products }) => {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.filter( product => product.type == 'furniture' )
+        products: state.cartReducer.products.filter( product => product.type == 'furniture' )
     }
 }
 

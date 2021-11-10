@@ -150,8 +150,8 @@ class CartTable extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.addedItems,
-        total: state.total
+        products: state.cartReducer.addedItems,
+        total: state.cartReducer.total
     }
 }
 

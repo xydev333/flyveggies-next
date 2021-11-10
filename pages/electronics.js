@@ -32,7 +32,7 @@ const Electronics = ({ products }) => {
 }
 
 const mapStateToProps = (state) => {
-    const products = state.products.filter( product => product.type == 'electronics' )
+    const products = state.cartReducer.products.filter( product => product.type == 'electronics' )
     return {
         products: products
     }

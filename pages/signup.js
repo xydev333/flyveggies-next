@@ -1,7 +1,7 @@
 import React, { useState, Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { userLogin } from '../store/actions/cartActions';
 import TopHeader from '../components/Layouts/TopHeader';
 import Navbar from '../components/Layouts/Navbar';
@@ -11,14 +11,16 @@ import InstagramFeed from '../components/Common/InstagramFeed';
 import Footer from '../components/Layouts/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useRef } from 'react/cjs/react.development';
+import authStatusActions from '../store/actions/authStatusActions'
 
-function Signup() {
+const Signup = () => {
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const { signup } = useAuth();
     const [error, setError] = useState("")
+    const dispatch = useDispatch();
 
     async function handleSignup(e) {
         e.preventDefault();
@@ -26,6 +28,7 @@ function Signup() {
         try {
           setError("");
           await signup(emailRef.current.value, passwordRef.current.value);
+          dispatch(authStatusActions.verficationEmailSent());
           Router.push('/login');
         } catch {
           setError("Failed to create an account")
