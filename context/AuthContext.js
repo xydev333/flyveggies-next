@@ -1,5 +1,8 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../firebase/index"
+import { auth, db } from "../firebase/index"
+import "react-toastify/dist/ReactToastify.min.css";
+import Router from 'next/router';
+import Alert from '../components/Alert/Alert'
 
 const AuthContext = React.createContext()
 
@@ -12,19 +15,26 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password)
+    return auth.createUserWithEmailAndPassword(email, password, firstname, lastname)
             .then((userCredential) => {
-              userCredential.user.sendEmailVerification({
-                url: window.location.protocol + "//" + window.location.host + '/login',
-              });
+              const user = userCredential.user;
+              await db.collection("users").add({
+                uid: user.uid,
+                fname: firstname,
+                lname: lastname,
+              })
+              Router.push('/login');
+              Alert('success', 'Verification Email Sent!')
               auth.signOut();
             })
             .catch(error => {
-              console.log(error.code);
+              console.log(error.code)
               switch(error.code) {
                 case 'auth/email-already-in-use': 
-                  break;
-              }
+                  Alert('error', 'Email Already Exist')
+                case 'auth/weak-password':
+                  Alert('warning', 'Password is too weak')
+              } 
             });
   }
 

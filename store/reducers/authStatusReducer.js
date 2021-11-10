@@ -4,7 +4,6 @@ import {
   UNREGISTERD_USER,
   INCOREECT_PASSWORD
 } from "../actions/action-types/authStatus-actions";
-import * as AUTH_STATUS from '../../constants/authStatus'
 
 const initState = {
   authStatus: ''
