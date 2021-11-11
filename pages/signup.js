@@ -10,6 +10,7 @@ import InstagramFeed from '../components/Common/InstagramFeed';
 import Footer from '../components/Layouts/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useRef } from 'react/cjs/react.development';
+import { db } from '../firebase/index'
 
 const Signup = () => {
     const firstNameRef = useRef();
@@ -23,10 +24,32 @@ const Signup = () => {
         e.preventDefault();
 
         try {
-          setError("");
-          await signup(emailRef.current.value, passwordRef.current.value, firstNameRef.value, lastNameRef.value);
+            setError("");
+            const res = await signup(emailRef.current.value, passwordRef.current.value);
+            const user = res.user;
+            console.log("userUid", user.uid);
+            db.settings({
+                timestampsInSnapshots: true
+              });
+            // await db.collection('users').add({
+            //     id: user.uid,
+            //     fname: firstNameRef.current.value
+            // })
+
+            console.log("addDB");
+            db.collection("values")
+                .doc("value")
+                .set({
+                value: "value",
+                })
+                .then(function () {
+                    console.log("Value successfully written!");
+                })
+                .catch(function (error) {
+                    console.error("Error writing Value: ", error);
+                });
         } catch {
-          setError("Failed to create an account")
+            setError("Failed to create an account")
         }
     }
 

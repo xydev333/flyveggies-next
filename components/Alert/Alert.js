@@ -1,9 +1,9 @@
 import React from 'react'
 import { toast } from "react-toastify";
 import ErrorIcon from '@material-ui/icons/Error';
-import BeenhereIcon from '@material-ui/icons/Beenhere';
 import InfoIcon from '@material-ui/icons/Info';
 import WarningIcon from '@material-ui/icons/Warning';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const Alert = (type, message) => {
   switch (type) {
@@ -12,7 +12,7 @@ const Alert = (type, message) => {
       case 'error':
           return toast.error(<div><ErrorIcon /> {message}</div>) // look this line
       case 'success':
-          return toast.success(<div><BeenhereIcon /> {message}</div>)
+          return toast.success(<div><CheckCircleIcon /> {message}</div>)
       case 'info':
           return toast.info(<div><InfoIcon /> {message}</div>)
       default:
