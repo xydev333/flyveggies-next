@@ -11,46 +11,53 @@ import Footer from '../components/Layouts/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useRef } from 'react/cjs/react.development';
 import { db } from '../firebase/index'
+import Alert from '../components/Alert/Alert'
+import { useRouter } from 'next/router';
 
 const Signup = () => {
     const firstNameRef = useRef();
     const lastNameRef = useRef();
+    const ageRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const { signup } = useAuth();
-    const [error, setError] = useState("")
+    const router = useRouter()
 
     async function handleSignup(e) {
         e.preventDefault();
 
-        try {
-            setError("");
-            const res = await signup(emailRef.current.value, passwordRef.current.value);
-            const user = res.user;
-            console.log("userUid", user.uid);
-            db.settings({
-                timestampsInSnapshots: true
-              });
-            // await db.collection('users').add({
-            //     id: user.uid,
-            //     fname: firstNameRef.current.value
-            // })
-
-            console.log("addDB");
-            db.collection("values")
-                .doc("value")
-                .set({
-                value: "value",
-                })
-                .then(function () {
-                    console.log("Value successfully written!");
-                })
-                .catch(function (error) {
-                    console.error("Error writing Value: ", error);
-                });
-        } catch {
-            setError("Failed to create an account")
+        if (ageRef.current.value < 21) {
+            Alert('warning', `You can't register if you are not 21`);
+            return ;
         }
+
+        await signup(emailRef.current.value, passwordRef.current.value)
+                .then(authUser => {
+                    db.collection("users")
+                    .doc(authUser.user.uid)
+                    .set({
+                        firstname: firstNameRef.current.value,
+                        lastname: lastNameRef.current.value
+                    })
+                    .then(() => {
+                        router.push('/login');
+                        Alert('success', 'Successfully Registered!')
+                    })
+                    .catch(function (error) {
+                        console.error("Error writing UserName: ", error);
+                    });
+                })
+                .catch(error => {
+                    console.log(error.code)
+                    switch(error.code) {
+                        case 'auth/email-already-in-use': 
+                            Alert('error', 'Email Already Exist')
+                            break
+                        case 'auth/weak-password':
+                            Alert('warning', 'Password is too weak')
+                            break
+                    } 
+                });
     }
 
     return (
@@ -78,6 +85,11 @@ const Signup = () => {
                             <div className="form-group">
                                 <label>Last Name</label>
                                 <input type="text" className="form-control" ref={lastNameRef} placeholder="Last Name" />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Age</label>
+                                <input type="text" className="form-control" ref={ageRef} placeholder="Age" />
                             </div>
 
                             <div className="form-group">
