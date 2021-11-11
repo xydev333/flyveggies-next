@@ -1,6 +1,5 @@
 import React, { useState, Component } from 'react';
 import Link from 'next/link';
-import Router from 'next/router';
 import { connect } from 'react-redux';
 import { userLogin } from '../store/actions/cartActions';
 import TopHeader from '../components/Layouts/TopHeader';
@@ -11,8 +10,9 @@ import InstagramFeed from '../components/Common/InstagramFeed';
 import Footer from '../components/Layouts/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useRef } from 'react/cjs/react.development';
+import { db } from '../firebase/index'
 
-function Signup() {
+const Signup = () => {
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
@@ -24,13 +24,33 @@ function Signup() {
         e.preventDefault();
 
         try {
-          setError("");
-          await signup(emailRef.current.value, passwordRef.current.value);
-          Router.push('/login');
-        } catch {
-          setError("Failed to create an account")
-        }
+            setError("");
+            const res = await signup(emailRef.current.value, passwordRef.current.value);
+            const user = res.user;
+            console.log("userUid", user.uid);
+            db.settings({
+                timestampsInSnapshots: true
+              });
+            // await db.collection('users').add({
+            //     id: user.uid,
+            //     fname: firstNameRef.current.value
+            // })
 
+            console.log("addDB");
+            db.collection("values")
+                .doc("value")
+                .set({
+                value: "value",
+                })
+                .then(function () {
+                    console.log("Value successfully written!");
+                })
+                .catch(function (error) {
+                    console.error("Error writing Value: ", error);
+                });
+        } catch {
+            setError("Failed to create an account")
+        }
     }
 
     return (

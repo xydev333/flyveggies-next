@@ -36,7 +36,7 @@ const HomeThree = ({ products }) => {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.filter( product => product.type == 'T-Shirt' )
+        products: state.cartReducer.products.filter( product => product.type == 'T-Shirt' )
     }
 }
 

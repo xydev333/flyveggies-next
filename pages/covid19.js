@@ -34,7 +34,7 @@ const Covid19 = ({ products }) => {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products.filter( product => product.type == 'medical' )
+        products: state.cartReducer.products.filter( product => product.type == 'medical' )
     }
 }
 

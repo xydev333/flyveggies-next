@@ -9,7 +9,6 @@ import FacilitySlider from '../components/Common/FacilitySlider';
 import InstagramFeed from '../components/Common/InstagramFeed';
 import Footer from '../components/Layouts/Footer';
 import { userLogin } from '../store/actions/cartActions';
-
 class Login extends Component {
 
     handleLogin = (e) => {
@@ -28,7 +27,7 @@ class Login extends Component {
                     homePageText="Home" 
                     activePageText="Login" 
                 /> 
-
+                
                 <section className="login-area ptb-100">
                     <div className="container">
                         <div className="row">

@@ -1,6 +1,3 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { firebase } from '../../firebase';
 const db = firebase.firestore();
 const dbOrderRef = db.collection('products');
@@ -224,10 +221,4 @@ const cartReducer = (state = initState, action) => {
     }
 }
 
-export const initStore = (initialState = initState) => {
-    return createStore(
-        cartReducer,
-        initialState,
-        composeWithDevTools(applyMiddleware(thunk))
-    )
-}
+export default cartReducer;
