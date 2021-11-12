@@ -89,7 +89,7 @@ class TopHeader extends Component {
 
 const mapStateToProps = (state)=>{
     return{
-        user: state.login
+        user: state.cartReducer.login
     }
 }
 

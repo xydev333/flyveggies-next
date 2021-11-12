@@ -13,6 +13,7 @@ import { useRef } from 'react/cjs/react.development';
 import { db } from '../firebase/index'
 import Alert from '../components/Alert/Alert'
 import { useRouter } from 'next/router';
+import * as ERRORCODE from '../constants/errorCode'
 
 const Signup = () => {
     const firstNameRef = useRef();
@@ -50,10 +51,10 @@ const Signup = () => {
                 .catch(error => {
                     console.log(error.code)
                     switch(error.code) {
-                        case 'auth/email-already-in-use': 
+                        case ERRORCODE.EMAIL_EXIST: 
                             Alert('error', 'Email Already Exist')
                             break
-                        case 'auth/weak-password':
+                        case ERRORCODE.WEAK_PASSWORD:
                             Alert('warning', 'Password is too weak')
                             break
                     } 
@@ -105,8 +106,8 @@ const Signup = () => {
                             <button type="submit" className="default-btn">Signup</button>
                             
                             <div className="text-center">
-                                <Link href="/">
-                                    <a className="return-store">or Return to Store</a>
+                                <Link href="/login">
+                                    <a className="return-login">or Return to Login</a>
                                 </Link>
                             </div>
                         </form>
