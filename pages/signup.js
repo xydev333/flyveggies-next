@@ -49,7 +49,6 @@ const Signup = () => {
                     });
                 })
                 .catch(error => {
-                    console.log(error.code)
                     switch(error.code) {
                         case ERRORCODE.EMAIL_EXIST: 
                             Alert('error', 'Email Already Exist')

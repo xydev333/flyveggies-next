@@ -40,7 +40,7 @@ class TopHeader extends Component {
                             <div className="col-lg-6 col-md-12 justify-content-end">
                                 <ul className="header-top-menu">
                                     <li>
-                                        <Link href="/login">
+                                        <Link href={ user ? "/profile" : "/login"}>
                                             <a>
                                                 <i className='bx bxs-user'></i> My Account
                                             </a>

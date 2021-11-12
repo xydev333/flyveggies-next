@@ -12,6 +12,13 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
 
+  const actionCodeSettings = {
+    // After password reset, the user will be give the ability to go back
+    // to this page.
+    url: window.location.protocol + "//" + window.location.host + '/login',
+    handleCodeInApp: false
+  };
+
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
   }
@@ -25,7 +32,7 @@ export function AuthProvider({ children }) {
   }
 
   function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email)
+    return auth.sendPasswordResetEmail(email, actionCodeSettings)
   }
 
   function updateEmail(email) {
