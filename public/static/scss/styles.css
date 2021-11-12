@@ -9864,7 +9864,7 @@ Signup CSS
   padding: 14px 25px;
 }
 
-.signup-content .signup-form .return-store {
+.signup-content .signup-form .return-login {
   display: inline-block;
   margin-top: 15px;
   color: #777777;
@@ -9872,7 +9872,7 @@ Signup CSS
   font-size: 15px;
 }
 
-.signup-content .signup-form .return-store::before {
+.signup-content .signup-form .return-login::before {
   width: 100%;
   height: 1.5px;
   background: #777777;
@@ -9884,11 +9884,11 @@ Signup CSS
   content: '';
 }
 
-.signup-content .signup-form .return-store:hover {
+.signup-content .signup-form .return-login:hover {
   color: #000000;
 }
 
-.signup-content .signup-form .return-store:hover::before {
+.signup-content .signup-form .return-login:hover::before {
   width: 0;
 }
 
