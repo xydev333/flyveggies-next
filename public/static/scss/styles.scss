@@ -10643,3 +10643,247 @@ Products Details Area CSS
     display: flex;
     border-radius: 10px;
 }
+
+.postbutton {
+    display: flex !important;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.postBlog {
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    a {
+        background-color: #f53f85;
+        color: #ffffff;
+        padding: 10px 20px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 120px;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+
+/* Admin product modal */
+.blog-post-modal {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.blog-post-modal .modal-innter-content {
+  width: 700px;
+  background-color: #ffffff;
+  height: 100%;
+  margin-left: auto;
+  overflow-y: auto;
+  margin-right: -100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.blog-post-modal .modal-innter-content .modal-body {
+  padding: 40px;
+}
+
+.blog-post-modal .modal-innter-content .modal-body h3 {
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.blog-post-modal .modal-innter-content .modal-body h3::before {
+  width: 50px;
+  height: 1px;
+  bottom: -1px;
+  content: '';
+  position: absolute;
+  left: 0;
+  background-color: #f53f85;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .title {
+  font-size: 18px;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .upload-img {
+  position: relative;
+  border: 2px dashed #eee;
+  border-radius: 5px;
+  background: #f7f9fb;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  text-align: center;
+  cursor: pointer;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .upload-img span {
+  display: block;
+  font-weight: 600;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 14px;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .upload-img span i {
+  display: block;
+  font-size: 50px;
+  margin-bottom: 15px;
+  color: #5a5757;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .upload-img input {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .uploaded-img {
+  width: 100px;
+  margin-top: 15px;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .btn {
+  text-transform: capitalize;
+}
+
+.blog-post-modal .modal-innter-content .modal-body form .modal-btn {
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.blog-post-modal .modal-innter-content .view-product-content .product-img {
+  position: relative;
+}
+
+.blog-post-modal .modal-innter-content .view-product-content .product-img .sale-tag {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: red;
+  color: #ffffff;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  border-radius: 50%;
+  z-index: 2;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.blog-post-modal .modal-innter-content .view-product-content .product-img .new-tag {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: green;
+  color: #ffffff;
+  text-align: center;
+  z-index: 2;
+  padding: 1px 7px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.blog-post-modal .modal-innter-content .view-product-content .product-img .discount {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: red;
+  color: #ffffff;
+  text-align: center;
+  z-index: 2;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 15px;
+}
+
+.blog-post-modal .modal-innter-content .view-product-content .products-details-desc h3 {
+  border: none;
+  margin: 0 0 10px;
+}
+
+.blog-post-modal .modal-innter-content .view-product-content .products-details-desc h3::before {
+  display: none;
+}
+
+.blog-post-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.blog-post-modal.active .modal-innter-content {
+  margin-right: 0;
+}
+
+.blog-post-modal .close {
+  color: #000000;
+  font-size: 28px;
+  outline: 0 !important;
+  line-height: initial;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: relative;
+  right: 40px;
+  top: 37px;
+  z-index: 1;
+}
+
+.blog-post-modal .close:not(:disabled):not(.disabled):hover, .blog-post-modal .close:not(:disabled):not(.disabled):focus {
+  color: red;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.blog-post-modal.view-product .modal-innter-content {
+  width: 1000px;
+}
+
+/* Responsive CSS */
+@media only screen and (max-width: 767px) {
+    .blog-post-modal .modal-innter-content {
+      width: 100%;
+    }
+    .blog-post-modal .modal-innter-content .modal-body {
+      padding: 30px;
+    }
+    .blog-post-modal .close {
+      right: 30px;
+      top: 28px;
+    }
+    .blog-post-modal.view-product .modal-innter-content {
+      width: 100%;
+    }
+  }

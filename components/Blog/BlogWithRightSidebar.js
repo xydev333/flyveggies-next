@@ -1,239 +1,118 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import BlogSidebar from './BlogSidebar';
-
+import { firebase } from '../../firebase';
+import { connect } from 'react-redux';
+import BlogPostModal from '../Modals/BlogPostModal';
+import { getBlogsFromDB } from '../../store/actions/blogActions'
 class BlogWithRightSidebar extends Component {
+    state = {
+        categories: [],
+        categoryName: ''
+    }
+
+    componentDidMount(){
+        this.props.getBlogsFromDB()
+        
+        const db = firebase.firestore();
+        const categoryRef = db.collection('categories');
+        let categoriesArray = [];
+        categoryRef.get()
+        .then(res => {
+            res.forEach(doc => {
+                let categoriesObj = doc.data();
+                categoriesObj.id = doc.id;
+                categoriesArray[categoriesObj.id] = categoriesObj.name;
+            });
+            this.setState({
+                categories: categoriesArray
+            })
+            this.loading = false;
+        })
+        .catch(err => {
+            console.log('error', err)
+        });
+    }
+
+    dateToString = (formatedTime) => {
+        const months = ['January', 'Feburary', 'March', 'April', 'May', 'June',
+                        'July', 'August', 'September', 'October', 'November', 'December'];
+        if(formatedTime) {
+            const date = formatedTime?.split('T')[0];
+            const dateParams = date.split('-');
+            return months[parseInt(dateParams[1]) - 1] + ' ' + dateParams[2] + ', ' + dateParams[0];
+        }
+    }
+
+    toggleModalBlogPost = () => {
+        this.setState({
+            BlogPostModal: !this.state.BlogPostModal
+        });
+    }
+
     render() {
+        const { categories } = this.state;
+        const { user } = this.props;
+        const { blogs } = this.props;
+        
         return (
-            <section className="blog-area ptb-100">
+            <section className="blog-area">
                 <div className="container">
+                    <div className="postbutton">
+                        <li className="postBlog">
+                        {
+                            user &&
+                            <Link href="#" activeClassName="active">
+                                <a 
+                                    className="nav-link" 
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        this.toggleModalBlogPost();
+                                    }}
+                                >
+                                    New Post
+                                </a>
+                            </Link>
+                        }
+                        </li>
+                    </div>
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
                             <div className="row">
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog1.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 29, 2020</span>
+                                {
+                                    blogs.length ? blogs.map((blog, idx) => (
+                                    <div key={idx} className="col-lg-6 col-md-6">
+                                        <div className="single-blog-post">
+                                            <div className="post-image">
+                                                <Link href="/single-blog-1">
+                                                    <a>
+                                                        <img src={blog.imageUrl} alt="image" width="650" height="500"/>
+                                                    </a>
+                                                </Link>
+                                                <div className="date">
+                                                    <span>{this.dateToString((new Date(blog.updated)).toJSON())}</span>
+                                                </div>
+                                            </div>
+
+                                            <div className="post-content">
+                                                <span className="category">{
+                                                    blog?.categoryId ? categories[blog.categoryId] : 'other'
+                                                }</span>
+                                                <h3>
+                                                    <Link href="/single-blog-1">
+                                                        <a>{blog?.title}</a>
+                                                    </Link>
+                                                </h3>
+
+                                                <Link href="/single-blog-1">
+                                                    <a className="details-btn">Read Story</a>
+                                                </Link>
                                             </div>
                                         </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Ideas</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>The #1 eCommerce blog to grow your business</a>
-                                                </Link>
-                                            </h3>
-
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
                                     </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog2.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 29, 2020</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Advice</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>Latest ecommerce trend: The rise of shoppable posts</a>
-                                                </Link>
-                                            </h3>
-                                            
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog3.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 29, 2020</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Social</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>Building eCommerce wave: Social media shopping</a>
-                                                </Link>
-                                            </h3>
-                                            
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog4.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 29, 2020</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Boy</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>The best eCommerce blogs for online retailers</a>
-                                                </Link>
-                                            </h3>
-                                            
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog5.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 29, 2020</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Platform</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>The best ecommerce platform for growing sales</a>
-                                                </Link>
-                                            </h3>
-                                            
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog6.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 29, 2020</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Shipping</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>Shipping impacts your customer’s experience</a>
-                                                </Link>
-                                            </h3>
-                                            
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog7.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 30, 2020</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Shipping</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>Discount shipping: faster and cheaper than ever</a>
-                                                </Link>
-                                            </h3>
-                                            
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-6 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a>
-                                                    <img src={require("../../images/blog/blog8.jpg")} alt="image" />
-                                                </a>
-                                            </Link>
-                                            <div className="date">
-                                                <span>January 31, 2020</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="post-content">
-                                            <span className="category">Shipping</span>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>A green brand finding roots in sustainability</a>
-                                                </Link>
-                                            </h3>
-                                            
-                                            <Link href="/single-blog-1">
-                                                <a className="details-btn">Read Story</a>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-        
+                                    )) : null 
+                                }
+                                        
                                 <div className="col-lg-12 col-md-12 col-sm-12">
                                     <div className="pagination-area text-center">
                                         <Link href="#">
@@ -276,9 +155,31 @@ class BlogWithRightSidebar extends Component {
                         </div>
                     </div>
                 </div>
+
+                {/* BlogPost Modal */}
+                <BlogPostModal 
+                    onClick={this.toggleModalBlogPost} 
+                    active={this.state.BlogPostModal ? 'active' : ''} 
+                />
             </section>
         );
     }
 }
 
-export default BlogWithRightSidebar;
+const mapStateToProps = (state)=>{
+    return{
+        user: state.cartReducer.login,
+        blogs: state.blogReducer.blogs || [],
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getBlogsFromDB: () => {dispatch(getBlogsFromDB())},
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BlogWithRightSidebar);
