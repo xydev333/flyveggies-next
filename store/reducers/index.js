@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import cartReducer from './cartReducer';
 import authStatusReducer from './authStatusReducer';
+import blogReducer from './blogReducer';
 
 const initState = {
   cartReducer: {
@@ -15,12 +16,16 @@ const initState = {
   },
   authStatusReducer: {
     authStatus: ''
+  },
+  blogReducer: {
+    blogs: []
   }
 }
 
 const rootReducer = combineReducers({
   cartReducer,
-  authStatusReducer
+  authStatusReducer,
+  blogReducer
 })
 
 export const initStore = (initialState = initState) => {

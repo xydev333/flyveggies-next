@@ -59,6 +59,7 @@ class NavbarTwo extends Component {
         const { collapsed } = this.state;
         const classNameOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
         const classNameTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
+        const { user } = this.props;
 
         return (
             <React.Fragment>
@@ -238,22 +239,16 @@ class NavbarTwo extends Component {
                                         </li>
  
                                         <li className="nav-item">
-                                            <Link href="#">
+                                            <Link href="/blog-5">
                                                 <a className="nav-link text-white">
                                                     Blog 
                                                 </a>
                                             </Link>
 
-                                            <ul className="dropdown-menu">
+                                            {/* <ul className="dropdown-menu">
                                                 <li className="nav-item">
                                                     <Link href="/blog-1" activeClassName="active">
                                                         <a className="nav-link">Grid (2 in Row)</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/blog-2" activeClassName="active">
-                                                        <a className="nav-link">Grid (3 in Row)</a>
                                                     </Link>
                                                 </li>
 
@@ -262,47 +257,7 @@ class NavbarTwo extends Component {
                                                         <a className="nav-link">Grid (4 in Row)</a>
                                                     </Link>
                                                 </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/blog-4" activeClassName="active">
-                                                        <a className="nav-link">Grid (Full Width)</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="/blog-5" activeClassName="active">
-                                                        <a className="nav-link">Right Sidebar</a>
-                                                    </Link>
-                                                </li>
-
-                                                <li className="nav-item">
-                                                    <Link href="#">
-                                                        <a className="nav-link">
-                                                            Single Post <i className='bx bx-chevron-right'></i>
-                                                        </a>
-                                                    </Link>
-
-                                                    <ul className="dropdown-menu">
-                                                        <li className="nav-item">
-                                                            <Link href="/single-blog-1" activeClassName="active">
-                                                                <a className="nav-link">Default</a>
-                                                            </Link>
-                                                        </li>
-                
-                                                        <li className="nav-item">
-                                                            <Link href="/single-blog-2" activeClassName="active">
-                                                                <a className="nav-link">With Video</a>
-                                                            </Link>
-                                                        </li>
-                
-                                                        <li className="nav-item">
-                                                            <Link href="/single-blog-3" activeClassName="active">
-                                                                <a className="nav-link">With Image Slider</a>
-                                                            </Link>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                            </ul> */}
                                         </li>
                                     </ul>
 
@@ -313,19 +268,22 @@ class NavbarTwo extends Component {
                                             </div>
                                         </div>
 
-                                        <div className="option-item">
-                                            <div className="cart-btn">
-                                                <Link href="#toggleModalCart">
-                                                    <a onClick={ e => {
-                                                        e.preventDefault();
-                                                        this.toggleModalCart();
-                                                    }}>
-                                                        <i className='bx bx-shopping-bag'></i>
-                                                        <span>{products.length}</span>
-                                                    </a>
-                                                </Link>
+                                        {
+                                            user &&
+                                            <div className="option-item">
+                                                <div className="cart-btn">
+                                                    <Link href="#toggleModalCart">
+                                                        <a onClick={ e => {
+                                                            e.preventDefault();
+                                                            this.toggleModalCart();
+                                                        }}>
+                                                            <i className='bx bx-shopping-bag'></i>
+                                                            <span>{products.length}</span>
+                                                        </a>
+                                                    </Link>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
 
                                         <div className="option-item">
                                             <div className="burger-menu" onClick={this.toggleModalSidebar}>
@@ -365,7 +323,8 @@ class NavbarTwo extends Component {
 
 const mapStateToProps = (state)=>{
     return{
-        products: state.cartReducer.addedItems
+        products: state.cartReducer.addedItems,
+        user: state.cartReducer.login
     }
 }
 

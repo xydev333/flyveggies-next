@@ -14,10 +14,10 @@ class Blog5 extends Component {
                 <TopHeader />
                 <Navbar />
                 <PageBanner 
-                    pageTitle="Blog Right Sidebar" 
+                    pageTitle="Blogs" 
                     homePageUrl="/" 
                     homePageText="Home" 
-                    activePageText="Blog Right Sidebar" 
+                    activePageText="Blog" 
                 /> 
                 <BlogWithRightSidebar />
                 <FacilitySlider />

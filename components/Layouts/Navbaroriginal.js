@@ -56,6 +56,7 @@ class Navbar extends Component {
     render() {
 
         const { products } = this.props;
+        const { user } = this.props;
         const { collapsed } = this.state;
         const classNameOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
         const classNameTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
@@ -861,19 +862,22 @@ class Navbar extends Component {
                                             </div>
                                         </div>
 
-                                        <div className="option-item">
-                                            <div className="cart-btn">
-                                                <Link href="#toggleModalCart">
-                                                    <a onClick={ e => {
-                                                        e.preventDefault();
-                                                        this.toggleModalCart();
-                                                    }}>
-                                                        <i className='bx bx-shopping-bag'></i>
-                                                        <span>{products.length}</span>
-                                                    </a>
-                                                </Link>
+                                        {
+                                            user &&
+                                            <div className="option-item">
+                                                <div className="cart-btn">
+                                                    <Link href="#toggleModalCart">
+                                                        <a onClick={ e => {
+                                                            e.preventDefault();
+                                                            this.toggleModalCart();
+                                                        }}>
+                                                            <i className='bx bx-shopping-bag'></i>
+                                                            <span>{products.length}</span>
+                                                        </a>
+                                                    </Link>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
 
                                         <div className="option-item">
                                             <div className="burger-menu" onClick={this.toggleModalSidebar}>
@@ -913,7 +917,8 @@ class Navbar extends Component {
 
 const mapStateToProps = (state)=>{
     return{
-        products: state.addedItems
+        products: state.cartReducer.addedItems,
+        user: state.cartReducer.login
     }
 }
 

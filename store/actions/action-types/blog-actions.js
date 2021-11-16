@@ -1,0 +1,2 @@
+export const GET_BLOGS_FROM_DB = 'GET_BLOGS_FROM_DB';
+export const DISPLAY_BLOGS = 'DISPLAY_BLOGS';
