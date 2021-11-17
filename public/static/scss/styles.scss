@@ -5280,7 +5280,7 @@ Blog CSS
     &:hover {
         .post-image {
             img {
-                transform: scale(1.07) rotate(2deg);
+                transform: scale(1.07);
             }
             .date {
                 visibility: visible;
@@ -10887,3 +10887,21 @@ Products Details Area CSS
       width: 100%;
     }
   }
+
+.blogImage {
+    width: 100%;
+    padding-bottom: 77%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    height: 0px;
+    position: relative;
+}
+
+.blogImage img {
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    align-items: center;
+}
