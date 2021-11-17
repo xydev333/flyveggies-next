@@ -4,6 +4,7 @@ import { firebase } from '../../firebase';
 import { toast } from 'react-toastify';
 import { getBlogsFromDB } from '../../store/actions/blogActions'
 import { useAuth } from '../../context/AuthContext';
+import axios from 'axios';
 
 const BlogPostModal1 = (props) => {
     const initialstate = {
@@ -14,10 +15,12 @@ const BlogPostModal1 = (props) => {
       categoryId: '1',
       userId: '',
       keyword: '',
-      content: ''
+      content: '',
+      previewImage: null,
+      progress: 0,
     }
     const  [
-      { modal, categoryId, imageUrl, title, keyword, content },
+      { modal, categoryId, imageUrl, title, keyword, content, previewImage, progress },
       setState
     ] = useState(initialstate)
     const [categories, setcategories] = useState([])
@@ -63,13 +66,13 @@ const BlogPostModal1 = (props) => {
     function postBlog (e) {
         e.preventDefault();
         const blog = {
-            imageUrl: imageUrl,
             title: title,
             keyword: keyword,
             categoryId: categoryId,
             content: content,
             views: 0,
             userId: currentUser.uid,
+            imageUrl: imageUrl,
             updated: Date.now()
         };
 
@@ -107,6 +110,46 @@ const BlogPostModal1 = (props) => {
       setState(prevState => ({ ...prevState, [name]: value }));
     };
 
+    const handleChange = (e) => {
+        if(e.target.files[0]){
+            let image = e.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = () => {
+                console.log("readerResult", reader.result);
+                setState(prevState => ({ ...prevState, previewImage: reader.result}))
+            }
+            handleUpload(image);
+        }
+    }
+
+    const handleUpload = (image) => {
+        let file = image;
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var uploadTask = storageRef.child('folder/' + file.name).put(file);
+        console.log("here");
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) =>{
+                var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
+                setState(prevState => ({...prevState, progress}))
+            },(error) =>{
+                console.log("here1");
+                throw error
+            },() =>{
+                // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
+                    console.log("here2");
+                uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
+                    console.log("url", typeof(url));
+                    setState(prevState => ({
+                        ...prevState,
+                        imageUrl: url
+                    }))
+                })
+            }
+        ) 
+    }
+
     return (
         <React.Fragment>
             <div className={`blog-post-modal ${props.active}`}> 
@@ -134,9 +177,17 @@ const BlogPostModal1 = (props) => {
                                         className="form-control-file"
                                         name="productImage"
                                         accept="image/*"
-                                        // onChange={handleChange}
+                                        onChange={handleChange}
                                     />
                                 </div>
+
+                                {
+                                    previewImage ? (
+                                    <div className="uploaded-img">
+                                        <img src={previewImage} alt="Image" className="img-thumbnail" />
+                                    </div>
+                                    ) : null
+                                }
 
                             </div>
 

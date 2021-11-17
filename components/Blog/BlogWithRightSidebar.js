@@ -5,6 +5,12 @@ import { firebase } from '../../firebase';
 import { connect } from 'react-redux';
 import BlogPostModal from '../Modals/BlogPostModal';
 import { getBlogsFromDB } from '../../store/actions/blogActions'
+
+const imgStyle = {
+    width: "100%",
+    height: "100%",
+}
+
 class BlogWithRightSidebar extends Component {
     state = {
         categories: [],
@@ -83,10 +89,11 @@ class BlogWithRightSidebar extends Component {
                                     blogs.length ? blogs.map((blog, idx) => (
                                     <div key={idx} className="col-lg-6 col-md-6">
                                         <div className="single-blog-post">
-                                            <div className="post-image">
+                                            <div className="post-image blogImage">
                                                 <Link href="/single-blog-1">
                                                     <a>
-                                                        <img src={blog.imageUrl} alt="image" width="650" height="500"/>
+                                                        <img src={blog.imageUrl} alt="image" style={imgStyle}/>
+                                                        {/* <img src={require("../../images/blog/blog0.jpg")} alt="image" style={imgStyle} /> */}
                                                     </a>
                                                 </Link>
                                                 <div className="date">
