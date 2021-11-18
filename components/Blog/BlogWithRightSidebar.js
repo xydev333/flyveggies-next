@@ -5,6 +5,7 @@ import { firebase } from '../../firebase';
 import { connect } from 'react-redux';
 import BlogPostModal from '../Modals/BlogPostModal';
 import { getBlogsFromDB } from '../../store/actions/blogActions'
+import Pagination from '../Common/Pagination';
 
 const imgStyle = {
     width: "100%",
@@ -12,9 +13,14 @@ const imgStyle = {
 }
 
 class BlogWithRightSidebar extends Component {
-    state = {
-        categories: [],
-        categoryName: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            categories: [],
+            categoryName: '',
+            currentPage: 1,
+            blogsPerPage: 5,
+        }
     }
 
     componentDidMount(){
@@ -56,10 +62,25 @@ class BlogWithRightSidebar extends Component {
         });
     }
 
+    onChangePage = (pageOfItems, pager) => {
+        let {currentPage, pageSize} = pager
+        // update state with new page of items
+        this.setState({ 
+            pageOfItems, currentPage, pageSize
+        });
+        window.scrollTo({
+            top: 0,
+            left: 100,
+            behavior: 'smooth'
+        })
+    }
+
     render() {
-        const { categories } = this.state;
-        const { user } = this.props;
-        const { blogs } = this.props;
+        const { categories, currentPage, blogsPerPage } = this.state;
+        const { user, blogs } = this.props;
+        const indexOfLastBlog = currentPage * blogsPerPage;
+        const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+        const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
         
         return (
             <section className="blog-area">
@@ -86,7 +107,7 @@ class BlogWithRightSidebar extends Component {
                         <div className="col-lg-8 col-md-12">
                             <div className="row">
                                 {
-                                    blogs.length ? blogs.map((blog, idx) => (
+                                    currentBlogs.length ? currentBlogs.map((blog, idx) => (
                                     <div key={idx} className="col-lg-6 col-md-6">
                                         <div className="single-blog-post">
                                             <div className="post-image blogImage">
@@ -119,38 +140,14 @@ class BlogWithRightSidebar extends Component {
                                     </div>
                                     )) : null 
                                 }
-                                        
+                                
                                 <div className="col-lg-12 col-md-12 col-sm-12">
-                                    <div className="pagination-area text-center">
-                                        <Link href="#">
-                                            <a className="prev page-numbers">
-                                                <i className='bx bx-chevron-left'></i>
-                                            </a>
-                                        </Link>
-
-                                        <span className="page-numbers current">1</span>
-
-                                        <Link href="#">
-                                            <a className="page-numbers">2</a>
-                                        </Link>
-
-                                        <Link href="#">
-                                            <a className="page-numbers">3</a>
-                                        </Link>
-
-                                        <Link href="#">
-                                            <a className="page-numbers">4</a>
-                                        </Link>
-
-                                        <Link href="#">
-                                            <a className="page-numbers">5</a>
-                                        </Link>
-
-                                        <Link href="#">
-                                            <a className="next page-numbers">
-                                                <i className='bx bx-chevron-right'></i>
-                                            </a>
-                                        </Link>
+                                    <div className="pagination-area">
+                                    <Pagination 
+                                        pageSize={blogsPerPage}
+                                        items={blogs} 
+                                        onChangePage={this.onChangePage}
+                                    />
                                     </div>
                                 </div>
                             </div>
