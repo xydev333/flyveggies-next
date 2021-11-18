@@ -79,7 +79,7 @@ const BlogPostModal1 = (props) => {
         if(title != '' && content != '' && categoryId != -1){
             const db = firebase.firestore();
             const dbOrderRef = db.collection('blogs');
-            dbOrderRef.add(blog).then(() => {
+            dbOrderRef.doc(props.blogNum).set(blog).then(() => {
                 toast.success('Blog has been created successfully.', {
                     position: "top-right",
                     autoClose: 3000,
@@ -140,7 +140,7 @@ const BlogPostModal1 = (props) => {
                 // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
                     console.log("here2");
                 uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
-                    console.log("url", typeof(url));
+                    console.log("url", url);
                     setState(prevState => ({
                         ...prevState,
                         imageUrl: url
