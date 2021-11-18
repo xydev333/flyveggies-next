@@ -1,8 +1,32 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import { connect } from 'react-redux';
+import { getBlogsFromDB, getCategoriesFromDB } from '../../store/actions/blogActions'
 
 class BlogSidebar extends Component {
+    componentDidMount() {
+        this.props.getBlogsFromDB();
+        this.props.getCategoriesFromDB();
+    }
+
+    dateToString = (formatedTime) => {
+        const months = ['January', 'Feburary', 'March', 'April', 'May', 'June',
+                        'July', 'August', 'September', 'October', 'November', 'December'];
+        if(formatedTime) {
+            const date = formatedTime?.split('T')[0];
+            const dateParams = date.split('-');
+            return months[parseInt(dateParams[1]) - 1] + ' ' + dateParams[2] + ', ' + dateParams[0];
+        }
+    }
+
     render() {
+        const { blogs, categories } = this.props;
+        const popblogs = blogs.sort(
+            function compare(a, b) {
+                return b.views - a.views;
+            }
+        ).slice(0, 9);
+
         return (
             <div className="widget-area">
                 <div className="widget widget_search">
@@ -19,181 +43,97 @@ class BlogSidebar extends Component {
 
                 <div className="widget widget_posts_thumb">
                     <h3 className="widget-title">Popular Posts</h3>
+                    {
+                        popblogs[0] &&
+                        <article className="item">
+                            <Link href="#">
+                                <a className="thumb">
+                                    <span className="fullimage cover" role="img">
+                                        <img src={popblogs[0].imageUrl} alt="image"/>
+                                    </span>
+                                </a>
+                            </Link>
 
-                    <article className="item">
-                        <Link href="#">
-                            <a className="thumb">
-                                <span className="fullimage cover bg1" role="img"></span>
-                            </a>
-                        </Link>
+                            <div className="info">
+                                <span>{this.dateToString((new Date(popblogs[0].updated)).toJSON())}</span>
+                                <h4 className="title usmall">
+                                    <Link href="#">
+                                        <a>{popblogs[0].title}</a>
+                                    </Link>
+                                </h4>
+                            </div>
 
-                        <div className="info">
-                            <span>June 10, 2020</span>
-                            <h4 className="title usmall">
-                                <Link href="#">
-                                    <a>Top ecommerce conferences in 2020</a>
-                                </Link>
-                            </h4>
-                        </div>
+                            <div className="clear"></div>
+                        </article>
+                    }
 
-                        <div className="clear"></div>
-                    </article>
+                    {
+                        popblogs[1] &&
+                        <article className="item">
+                            <Link href="#">
+                                <a className="thumb">
+                                    <span className="fullimage cover" role="img">
+                                        <img src={popblogs[1].imageUrl} alt="image"/>
+                                    </span>
+                                </a>
+                            </Link>
 
-                    <article className="item">
-                        <Link href="#">
-                            <a className="thumb">
-                                <span className="fullimage cover bg2" role="img"></span>
-                            </a>
-                        </Link>
+                            <div className="info">
+                                <span>{this.dateToString((new Date(popblogs[1].updated)).toJSON())}</span>
+                                <h4 className="title usmall">
+                                    <Link href="#">
+                                        <a>{popblogs[1].title}</a>
+                                    </Link>
+                                </h4>
+                            </div>
 
-                        <div className="info">
-                            <span>June 21, 2020</span>
-                            <h4 className="title usmall">
-                                <Link href="#">
-                                    <a>Introducing the 2020 bigCommerce partner</a>
-                                </Link>
-                            </h4>
-                        </div>
+                            <div className="clear"></div>
+                        </article>
+                    }
+                    
+                    {
+                        popblogs[2] &&
+                        <article className="item">
+                            <Link href="#">
+                                <a className="thumb">
+                                    <span className="fullimage cover" role="img">
+                                        <img src={popblogs[2].imageUrl} alt="image"/>
+                                    </span>
+                                </a>
+                            </Link>
 
-                        <div className="clear"></div>
-                    </article>
+                            <div className="info">
+                                <span>{this.dateToString((new Date(popblogs[2].updated)).toJSON())}</span>
+                                <h4 className="title usmall">
+                                    <Link href="#">
+                                        <a>{popblogs[2].title}</a>
+                                    </Link>
+                                </h4>
+                            </div>
 
-                    <article className="item">
-                        <Link href="#">
-                            <a className="thumb">
-                                <span className="fullimage cover bg3" role="img"></span>
-                            </a>
-                        </Link>
-
-                        <div className="info">
-                            <span>June 30, 2020</span>
-                            <h4 className="title usmall">
-                                <Link href="#">
-                                    <a>Best platforms for selling your products</a>
-                                </Link>
-                            </h4>
-                        </div>
-
-                        <div className="clear"></div>
-                    </article>
+                            <div className="clear"></div>
+                        </article>
+                    }
                 </div>
 
                 <div className="widget widget_categories">
                     <h3 className="widget-title">Categories</h3>
 
                     <ul>
-                        <li>
-                            <Link href="#">
-                                <a>Design <span className="post-count">(03)</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a>Lifestyle <span className="post-count">(05)</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a>Script <span className="post-count">(10)</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a>Device <span className="post-count">(08)</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a>Tips <span className="post-count">(01)</span></a>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-
-                <div className="widget widget_tag_cloud">
-                    <h3 className="widget-title">Livani Tags</h3>
-
-                    <div className="tagcloud">
-                        <Link href="#">
-                            <a>Business <span className="tag-link-count"> (3)</span></a>
-                        </Link>
-
-                        <Link href="#">
-                            <a>Design <span className="tag-link-count"> (3)</span></a>
-                        </Link>
-
-                        <Link href="#">
-                            <a>Livani <span className="tag-link-count"> (2)</span></a>
-                        </Link>
-
-                        <Link href="#">
-                            <a>Fashion <span className="tag-link-count"> (2)</span></a>
-                        </Link>
-
-                        <Link href="#">
-                            <a>Travel <span className="tag-link-count"> (1)</span></a>
-                        </Link>
-
-                        <Link href="#">
-                            <a>Smart <span className="tag-link-count"> (1)</span></a>
-                        </Link>
-
-                        <Link href="#">
-                            <a>Marketing <span className="tag-link-count"> (1)</span></a>
-                        </Link>
-
-                        <Link href="#">
-                            <a>Tips <span className="tag-link-count"> (2)</span></a>
-                        </Link>
-                    </div>
-                </div>
-
-                <div className="widget widget_instagram">
-                    <h3 className="widget-title">Instagram</h3>
-
-                    <ul>
-                        <li>
-                            <Link href="#">
-                                <a className="d-block">
-                                    <img src={require("../../images/blog/blog1.jpg")} alt="image" />
-                                </a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a className="d-block">
-                                    <img src={require("../../images/blog/blog2.jpg")} alt="image" />
-                                </a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a className="d-block">
-                                    <img src={require("../../images/blog/blog3.jpg")} alt="image" />
-                                </a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a className="d-block">
-                                    <img src={require("../../images/blog/blog4.jpg")} alt="image" />
-                                </a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a className="d-block">
-                                    <img src={require("../../images/blog/blog5.jpg")} alt="image" />
-                                </a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#">
-                                <a className="d-block">
-                                    <img src={require("../../images/blog/blog6.jpg")} alt="image" />
-                                </a>
-                            </Link>
-                        </li>
+                        {
+                            categories.length ? categories.map((category, idx) => (
+                                <li key={idx}>
+                                    <Link href="#">
+                                        <a>
+                                            {category}
+                                            <span className="post-count">
+                                                ({blogs.filter(blog => blog.categoryId == idx).length})
+                                            </span>
+                                        </a>
+                                    </Link>
+                                </li>
+                            )) : null
+                        }
                     </ul>
                 </div>
 
@@ -211,4 +151,22 @@ class BlogSidebar extends Component {
     }
 }
 
-export default BlogSidebar;
+const mapStateToProps = (state)=>{
+    return{
+        user: state.cartReducer.login,
+        blogs: state.blogReducer.blogs || [],
+        categories: state.blogReducer.categories || [],
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getBlogsFromDB: () => {dispatch(getBlogsFromDB())},
+        getCategoriesFromDB: () => {dispatch(getCategoriesFromDB())},
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BlogSidebar);

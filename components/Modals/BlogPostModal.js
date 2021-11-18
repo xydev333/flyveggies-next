@@ -53,12 +53,15 @@ const BlogPostModal1 = (props) => {
     }, [])
 
     function getCategoryId (name) {
+        console.log("asdfasdf", name);
         const db = firebase.firestore();
         db.collection('categories').where('name', '==', name)
         .get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
-                setState(prevState => ({ ...prevState, [categoryId]: doc.id }));
+                console.log("categoryid ",doc.id)
+                setState(prevState => ({ ...prevState, categoryId: doc.id }));
+                console.log("getCategoryId", categoryId)
             });
         })
     }
@@ -76,10 +79,10 @@ const BlogPostModal1 = (props) => {
             updated: Date.now()
         };
 
-        if(title != '' && content != '' && categoryId != -1){
+        if(title && content && categoryId){
             const db = firebase.firestore();
             const dbOrderRef = db.collection('blogs');
-            dbOrderRef.doc(props.blogNum).set(blog).then(() => {
+            dbOrderRef.add(blog).then(() => {
                 toast.success('Blog has been created successfully.', {
                     position: "top-right",
                     autoClose: 3000,
@@ -90,7 +93,6 @@ const BlogPostModal1 = (props) => {
                 });
                 closeModal();
                 resetForm()
-
                 props.getBlogsFromDB()
             });
         } else {
@@ -127,20 +129,20 @@ const BlogPostModal1 = (props) => {
         let file = image;
         var storage = firebase.storage();
         var storageRef = storage.ref();
-        var uploadTask = storageRef.child('folder/' + file.name).put(file);
-        console.log("here");
+        var uploadTask = storageRef.child('folder/' + file.name + (Date.now())).put(file);
+        // console.log("here");
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
             (snapshot) =>{
                 var progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes))*100
                 setState(prevState => ({...prevState, progress}))
             },(error) =>{
-                console.log("here1");
+                // console.log("here1");
                 throw error
             },() =>{
                 // uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) =>{
-                    console.log("here2");
+                    // console.log("here2");
                 uploadTask.snapshot.ref.getDownloadURL().then((url) =>{
-                    console.log("url", url);
+                    // console.log("url", url);
                     setState(prevState => ({
                         ...prevState,
                         imageUrl: url
@@ -229,7 +231,8 @@ const BlogPostModal1 = (props) => {
                             <div className="form-group">
                                 <label>Category</label>
                                 <select 
-                                    className="form-control" 
+                                    className="form-control"
+                                    value={categoryId}
                                     onChange={e => getCategoryId(e.target.value)}
                                 >
                                     {
