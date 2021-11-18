@@ -10905,3 +10905,22 @@ Products Details Area CSS
     vertical-align: middle;
     align-items: center;
 }
+
+.followbtn{
+    background: transparent;
+    border: none;
+    margin-left: auto;
+}
+
+.followbtn:hover{
+    -webkit-transform: scale(1.07) rotate(2deg);
+          transform: scale(1.07) rotate(2deg);
+    transition: 0.1s;
+    opacity: 0.5;
+}
+
+.titlediv{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5%;
+}
