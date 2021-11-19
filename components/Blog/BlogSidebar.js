@@ -34,6 +34,9 @@ class BlogSidebar extends Component {
         this.setState({
             searchQuery: event.target.value
         })
+        if (event.target.value == '') {
+            this.props.onChangeSearchQuery('');    
+        }
     }
 
     onClickSearch = (e) => {
