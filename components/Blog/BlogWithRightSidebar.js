@@ -30,6 +30,7 @@ class BlogWithRightSidebar extends Component {
             following: false,
             categoryId: '0',
             currentCategoryId: '0',
+            searchQuery: '',
         }
     }
 
@@ -54,17 +55,21 @@ class BlogWithRightSidebar extends Component {
         });
     }
 
+    scrollUp = () => {
+        window.scrollTo({
+            top: 0,
+            left: 100,
+            behavior: 'smooth'
+        })
+    }
+
     onChangePage = (pageOfItems, pager) => {
         let {currentPage, pageSize} = pager
         // update state with new page of items
         this.setState({ 
             pageOfItems, currentPage, pageSize
         });
-        window.scrollTo({
-            top: 0,
-            left: 100,
-            behavior: 'smooth'
-        })
+        this.scrollUp();
     }
 
     followBlog = () => {
@@ -75,21 +80,24 @@ class BlogWithRightSidebar extends Component {
         this.setState({
             currentCategoryId: id
         });
-        window.scrollTo({
-            top: 0,
-            left: 100,
-            behavior: 'smooth'
+        this.scrollUp()
+    }
+
+    changeSearchQuery = (query) => {
+        this.setState({
+            searchQuery: query
         })
+        this.scrollUp()
     }
 
     render() {
-        const { currentPage, blogsPerPage, following, currentCategoryId } = this.state;
+        const { currentPage, blogsPerPage, following, currentCategoryId, searchQuery } = this.state;
         const { user, blogs, categories } = this.props;
         const indexOfLastBlog = currentPage * blogsPerPage;
         const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
         //Blog Array for the selected Category
-        let filteredBlogs = [{}];
-        filteredBlogs = currentCategoryId != '0' ?
+        let filteredBlogsByCategory = [{}];
+        filteredBlogsByCategory = currentCategoryId != '0' ?
             blogs.filter(blog => blog.categoryId == currentCategoryId).sort(
                 function compare(a, b) {
                     return b.updated - a.updated;
@@ -101,6 +109,11 @@ class BlogWithRightSidebar extends Component {
                 }
             )
         
+        //Filter blogs if there is search query.
+        const filteredBlogs = searchQuery ?
+            filteredBlogsByCategory.filter(blog => blog.title.includes(searchQuery)) :
+            filteredBlogsByCategory
+
         //Blog Array to show in current page
         const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog)
 
@@ -200,7 +213,8 @@ class BlogWithRightSidebar extends Component {
 
                         <div className="col-lg-4 col-md-12">
                             <BlogSidebar
-                                onClick={this.changeCategoryId}
+                                onChangeCategory={this.changeCategoryId}
+                                onChangeSearchQuery={this.changeSearchQuery}
                             />
                         </div>
                     </div>
