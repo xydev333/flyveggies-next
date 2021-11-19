@@ -53,15 +53,12 @@ const BlogPostModal1 = (props) => {
     }, [])
 
     function getCategoryId (name) {
-        console.log("asdfasdf", name);
         const db = firebase.firestore();
         db.collection('categories').where('name', '==', name)
         .get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
-                console.log("categoryid ",doc.id)
                 setState(prevState => ({ ...prevState, categoryId: doc.id }));
-                console.log("getCategoryId", categoryId)
             });
         })
     }

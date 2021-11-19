@@ -27,7 +27,9 @@ class BlogWithRightSidebar extends Component {
             categoryName: '',
             currentPage: 1,
             blogsPerPage: 6,
-            following: false
+            following: false,
+            categoryId: '0',
+            currentCategoryId: '0',
         }
     }
 
@@ -69,17 +71,39 @@ class BlogWithRightSidebar extends Component {
         this.setState({following: true})
     }
 
+    changeCategoryId = (id) => {
+        this.setState({
+            currentCategoryId: id
+        });
+        window.scrollTo({
+            top: 0,
+            left: 100,
+            behavior: 'smooth'
+        })
+    }
+
     render() {
-        const { currentPage, blogsPerPage, following } = this.state;
+        const { currentPage, blogsPerPage, following, currentCategoryId } = this.state;
         const { user, blogs, categories } = this.props;
         const indexOfLastBlog = currentPage * blogsPerPage;
         const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-        const currentBlogs = blogs.sort(
-            function compare(a, b) {
-                return b.updated - a.updated;
-            }
-        ).slice(indexOfFirstBlog, indexOfLastBlog);
+        //Blog Array for the selected Category
+        let filteredBlogs = [{}];
+        filteredBlogs = currentCategoryId != '0' ?
+            blogs.filter(blog => blog.categoryId == currentCategoryId).sort(
+                function compare(a, b) {
+                    return b.updated - a.updated;
+                }
+            ) :
+            blogs.sort(
+                function compare(a, b) {
+                    return b.updated - a.updated;
+                }
+            )
         
+        //Blog Array to show in current page
+        const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog)
+
         return (
             <section className="blog-area">
                 <div className="container">
@@ -166,7 +190,7 @@ class BlogWithRightSidebar extends Component {
                                     <div className="pagination-area">
                                     <Pagination 
                                         pageSize={blogsPerPage}
-                                        items={blogs} 
+                                        items={filteredBlogs} 
                                         onChangePage={this.onChangePage}
                                     />
                                     </div>
@@ -175,7 +199,9 @@ class BlogWithRightSidebar extends Component {
                         </div>
 
                         <div className="col-lg-4 col-md-12">
-                            <BlogSidebar />
+                            <BlogSidebar
+                                onClick={this.changeCategoryId}
+                            />
                         </div>
                     </div>
                 </div>
