@@ -149,7 +149,6 @@ class BlogWithRightSidebar extends Component {
                                                 <Link href="/single-blog-1">
                                                     <a>
                                                         <img src={blog.imageUrl} alt="image" style={imgStyle}/>
-                                                        {/* <img src={require("../../images/blog/blog0.jpg")} alt="image" style={imgStyle} /> */}
                                                     </a>
                                                 </Link>
                                                 <div className="date">
