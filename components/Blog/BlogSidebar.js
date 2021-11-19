@@ -4,6 +4,13 @@ import { connect } from 'react-redux';
 import { getBlogsFromDB, getCategoriesFromDB } from '../../store/actions/blogActions'
 
 class BlogSidebar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchQuery: '',
+        }
+    }
+
     componentDidMount() {
         this.props.getBlogsFromDB();
     }
@@ -19,7 +26,19 @@ class BlogSidebar extends Component {
     }
 
     onCategoryChange = (value) => {
-        this.props.onClick('' + value);
+        this.props.onChangeCategory('' + value);
+    }
+
+    onSearchQueryChange = (event) => {
+        event.preventDefault();
+        this.setState({
+            searchQuery: event.target.value
+        })
+    }
+
+    onClickSearch = (e) => {
+        e.preventDefault();
+        this.props.onChangeSearchQuery(this.state.searchQuery);
     }
 
     render() {
@@ -36,9 +55,14 @@ class BlogSidebar extends Component {
                     <form className="search-form">
                         <label>
                             <span className="screen-reader-text">Search for:</span>
-                            <input type="search" className="search-field" placeholder="Search..." />
+                            <input 
+                                type="search"
+                                className="search-field"
+                                placeholder="Search..."
+                                onChange={this.onSearchQueryChange}
+                            />
                         </label>
-                        <button type="submit">
+                        <button onClick={this.onClickSearch}>
                             <i className="bx bx-search-alt"></i>
                         </button>
                     </form>
