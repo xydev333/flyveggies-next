@@ -6,7 +6,6 @@ import { getBlogsFromDB, getCategoriesFromDB } from '../../store/actions/blogAct
 class BlogSidebar extends Component {
     componentDidMount() {
         this.props.getBlogsFromDB();
-        this.props.getCategoriesFromDB();
     }
 
     dateToString = (formatedTime) => {
@@ -17,6 +16,10 @@ class BlogSidebar extends Component {
             const dateParams = date.split('-');
             return months[parseInt(dateParams[1]) - 1] + ' ' + dateParams[2] + ', ' + dateParams[0];
         }
+    }
+
+    onCategoryChange = (value) => {
+        this.props.onClick('' + value);
     }
 
     render() {
@@ -120,11 +123,21 @@ class BlogSidebar extends Component {
                     <h3 className="widget-title">Categories</h3>
 
                     <ul>
+                        <li key='0' onClick={this.onCategoryChange.bind(this, 0)}>
+                            <Link href="#">
+                                <a>
+                                    All
+                                    <span className="post-count">
+                                        ({blogs.length})
+                                    </span>
+                                </a>
+                            </Link>
+                        </li>
                         {
                             categories.length ? categories.map((category, idx) => (
-                                <li key={idx}>
+                                <li key={idx} value={idx} onClick={this.onCategoryChange.bind(this, idx)}>
                                     <Link href="#">
-                                        <a>
+                                        <a >
                                             {category}
                                             <span className="post-count">
                                                 ({blogs.filter(blog => blog.categoryId == idx).length})
