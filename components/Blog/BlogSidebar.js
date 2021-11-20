@@ -13,6 +13,10 @@ class BlogSidebar extends Component {
 
     componentDidMount() {
         this.props.getBlogsFromDB();
+        const { currentsearchQuery } = this.props;
+        this.setState({
+            searchQuery: currentsearchQuery
+        })
     }
 
     dateToString = (formatedTime) => {
@@ -45,7 +49,7 @@ class BlogSidebar extends Component {
     }
 
     render() {
-        const { blogs, categories } = this.props;
+        const { blogs, categories, currentCategoryId } = this.props;
         const popblogs = blogs.sort(
             function compare(a, b) {
                 return b.views - a.views;
@@ -62,6 +66,7 @@ class BlogSidebar extends Component {
                                 type="search"
                                 className="search-field"
                                 placeholder="Search..."
+                                value={this.state.searchQuery}
                                 onChange={this.onSearchQueryChange}
                             />
                         </label>
@@ -152,7 +157,7 @@ class BlogSidebar extends Component {
                     <ul>
                         <li key='0' onClick={this.onCategoryChange.bind(this, 0)}>
                             <Link href="#">
-                                <a>
+                                <a style={currentCategoryId == '0' ? {color: '#f53f85'} : {}}>
                                     All
                                     <span className="post-count">
                                         ({blogs.length})
@@ -164,7 +169,7 @@ class BlogSidebar extends Component {
                             categories.length ? categories.map((category, idx) => (
                                 <li key={idx} value={idx} onClick={this.onCategoryChange.bind(this, idx)}>
                                     <Link href="#">
-                                        <a >
+                                        <a style={currentCategoryId == idx ? {color: '#f53f85'} : {}}>
                                             {category}
                                             <span className="post-count">
                                                 ({blogs.filter(blog => blog.categoryId == idx).length})
@@ -196,6 +201,8 @@ const mapStateToProps = (state)=>{
         user: state.cartReducer.login,
         blogs: state.blogReducer.blogs || [],
         categories: state.blogReducer.categories || [],
+        currentCategoryId: state.blogReducer.currentCategoryId || '0',
+        currentsearchQuery: state.blogReducer.searchQuery || ''
     }
 }
 

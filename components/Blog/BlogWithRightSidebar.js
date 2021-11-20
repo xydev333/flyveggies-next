@@ -3,7 +3,13 @@ import Link from 'next/link';
 import BlogSidebar from './BlogSidebar';
 import { connect } from 'react-redux';
 import BlogPostModal from '../Modals/BlogPostModal';
-import { getBlogsFromDB, getCategoriesFromDB } from '../../store/actions/blogActions'
+import {
+    getBlogsFromDB,
+    getCategoriesFromDB,
+    setCurrentCategoryId,
+    setCurrentPage,
+    setSearchQuery
+} from '../../store/actions/blogActions'
 import Pagination from '../Common/Pagination';
 
 const imgStyle = {
@@ -24,12 +30,9 @@ class BlogWithRightSidebar extends Component {
         super(props);
         this.state = {
             categoryName: '',
-            currentPage: 1,
             blogsPerPage: 6,
             following: false,
             categoryId: '0',
-            currentCategoryId: '0',
-            searchQuery: '',
         }
     }
 
@@ -64,10 +67,7 @@ class BlogWithRightSidebar extends Component {
 
     onChangePage = (pageOfItems, pager) => {
         let {currentPage, pageSize} = pager
-        // update state with new page of items
-        this.setState({ 
-            pageOfItems, currentPage, pageSize
-        });
+        this.props.setCurrentPage(currentPage);
         this.scrollUp();
     }
 
@@ -76,22 +76,20 @@ class BlogWithRightSidebar extends Component {
     }
 
     changeCategoryId = (id) => {
-        this.setState({
-            currentCategoryId: id
-        });
+        this.props.setCurrentCategoryId(id);
+        this.props.setCurrentPage(1);
         this.scrollUp()
     }
 
     changeSearchQuery = (query) => {
-        this.setState({
-            searchQuery: query
-        })
+        this.props.setSearchQuery(query)
+        this.props.setCurrentPage(1);
         this.scrollUp()
     }
 
     render() {
-        const { currentPage, blogsPerPage, following, currentCategoryId, searchQuery } = this.state;
-        const { user, blogs, categories } = this.props;
+        const { blogsPerPage, following } = this.state;
+        const { user, blogs, categories, currentPage, currentCategoryId, searchQuery } = this.props;
         const indexOfLastBlog = currentPage * blogsPerPage;
         const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
         //Blog Array for the selected Category
@@ -239,6 +237,9 @@ const mapStateToProps = (state)=>{
         user: state.cartReducer.login,
         blogs: state.blogReducer.blogs || [],
         categories: state.blogReducer.categories || [],
+        currentCategoryId: state.blogReducer.currentCategoryId || '0',
+        currentPage: state.blogReducer.currentPage || 1,
+        searchQuery: state.blogReducer.searchQuery || '',
     }
 }
 
@@ -246,6 +247,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getBlogsFromDB: () => {dispatch(getBlogsFromDB())},
         getCategoriesFromDB: () => {dispatch(getCategoriesFromDB())},
+        setCurrentCategoryId: id => {dispatch(setCurrentCategoryId(id))},
+        setCurrentPage: (curPage) => {dispatch(setCurrentPage(curPage))},
+        setSearchQuery: query => {dispatch(setSearchQuery(query))},
     }
 }
 

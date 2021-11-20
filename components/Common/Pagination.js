@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Link from 'next/link';
 
 const propTypes = {
@@ -21,7 +22,7 @@ class Pagination extends React.Component {
     componentWillMount() {
         // set page if items array isn't empty
         if (this.props.items && this.props.items.length) {
-            this.setPage(this.props.initialPage);
+            this.setPage(this.props.currentPage);
         }
     }
 
@@ -32,7 +33,7 @@ class Pagination extends React.Component {
 
         // reset page if items array has changed
         if (!is_same) {
-            this.setPage(this.props.initialPage);
+            this.setPage(this.props.currentPage);
         }
     }
 
@@ -152,4 +153,12 @@ class Pagination extends React.Component {
 Pagination.propTypes = propTypes;
 Pagination.defaultProps = defaultProps;
 
-export default Pagination;
+const mapStateToProps = (state)=>{
+    return{
+        currentPage: state.blogReducer.currentPage || 1,
+    }
+}
+export default connect(
+    mapStateToProps,
+    null
+)(Pagination);
