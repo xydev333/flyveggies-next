@@ -4,7 +4,23 @@ import { firebase } from '../../firebase';
 import { toast } from 'react-toastify';
 import { getBlogsFromDB } from '../../store/actions/blogActions'
 import { useAuth } from '../../context/AuthContext';
-import axios from 'axios';
+const ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
+import 'react-quill/dist/quill.snow.css';
+
+const modules = {
+    toolbar: [
+        [{ font: [] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["bold", "italic", "underline", "strike"],
+        [{ color: [] }, { background: [] }],
+        [{ script:  "sub" }, { script:  "super" }],
+        ["blockquote", "code-block"],
+        [{ list:  "bullet" }],
+        [{ indent:  "-1" }, { indent:  "+1" }, { align: [] }],
+        ["link", "image", "video"],
+        ["clean"],
+    ]
+}
 
 const BlogPostModal1 = (props) => {
     const initialstate = {
@@ -109,6 +125,10 @@ const BlogPostModal1 = (props) => {
       setState(prevState => ({ ...prevState, [name]: value }));
     };
 
+    const onContentChange = e => {
+        setState(prevState => ({ ...prevState, content: e }));
+    }
+
     const handleChange = (e) => {
         if(e.target.files[0]){
             let image = e.target.files[0];
@@ -164,7 +184,7 @@ const BlogPostModal1 = (props) => {
 
                         <form onSubmit={postBlog}>
                             <div className="form-group">
-                                <label>Upload your Blog image here</label>
+                                <label>Upload your preview image here</label>
                                 <div className="upload-img">
                                     <span>
                                         <i className='bx bxs-image-add'></i>
@@ -194,7 +214,8 @@ const BlogPostModal1 = (props) => {
                             
                             <div className="form-group">
                                 <label>Title</label>
-                                <input 
+                                <input
+                                    required 
                                     type="text" 
                                     className="form-control" 
                                     value={title}
@@ -213,15 +234,15 @@ const BlogPostModal1 = (props) => {
                                     onChange={onChange}
                                 />
                             </div>
-
+                                
                             <div className="form-group">
                                 <label>Content</label>
-                                <textarea 
-                                    className="form-control" 
+                                <ReactQuill
+                                    className='content-quill'
+                                    modules={modules}
                                     value={content}
-                                    name='content'
-                                    onChange={onChange}
-                                    rows="6"
+                                    placeholder="Content goes here..."
+                                    onChange={onContentChange}
                                 />
                             </div>
 
@@ -229,7 +250,6 @@ const BlogPostModal1 = (props) => {
                                 <label>Category</label>
                                 <select 
                                     className="form-control"
-                                    value={categoryId}
                                     onChange={e => getCategoryId(e.target.value)}
                                 >
                                     {

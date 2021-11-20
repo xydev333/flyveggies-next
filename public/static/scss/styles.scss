@@ -5346,7 +5346,9 @@ Blog Details CSS
 .blog-details-desc {
     .article-image {
         img {
-            width: 100%;
+            align-items: center;
+            display: flex;
+            margin: auto;
         }
     }
     .article-image-slides {
@@ -5403,6 +5405,7 @@ Blog Details CSS
         margin-top: 30px;
 
         .entry-meta {
+            // margin-bottom: 20px;
             ul {
                 padding-left: 0;
                 margin-bottom: 0;
@@ -5454,13 +5457,13 @@ Blog Details CSS
                 }
             }
         }
-        h3 {
+        h1 {
             margin: {
                 bottom: 17px;
                 top: 25px;
             };
             font: {
-                size: 25px;
+                size: 35px;
                 weight: 700;
             };
         }
@@ -10889,34 +10892,21 @@ Products Details Area CSS
   }
 
 .blogImage {
-    // width: 100%;
-    // padding-bottom: 77%;
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-position: center center;
-    // height: 0px;
-    // position: relative;
-    // width: 100%;
     max-width: 100%;
     height: 280px;
-    // padding-bottom: 77%;
     border: solid 1px #CCCCCC;
     vertical-align: middle;
     position: relative;
 }
 
 .blogImage a {
-    position: absolute;
     display: block;
-    margin-top: auto;
-    margin-bottom: auto;
     width: 100%;
     height: 100%;
 }
 
 .blogImage img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -10937,4 +10927,11 @@ Products Details Area CSS
     display: flex;
     justify-content: space-between;
     padding-right: 5%;
+}
+
+.Quill-content {
+    min-height: 20em;
+}
+.content-quill .ql-editor {
+    min-height: 20em;
 }
