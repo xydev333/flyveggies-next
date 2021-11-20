@@ -76,7 +76,7 @@ class BlogSidebar extends Component {
                     {
                         popblogs[0] &&
                         <article className="item">
-                            <Link href="#">
+                            <Link href={{ pathname: '/single-blog-1', query: { id: popblogs[0].id } }}>
                                 <a className="thumb">
                                     <span className="fullimage cover" role="img">
                                         <img src={popblogs[0].imageUrl} alt="image"/>
@@ -87,7 +87,7 @@ class BlogSidebar extends Component {
                             <div className="info">
                                 <span>{this.dateToString((new Date(popblogs[0].updated)).toJSON())}</span>
                                 <h4 className="title usmall">
-                                    <Link href="#">
+                                    <Link href={{ pathname: '/single-blog-1', query: { id: popblogs[0].id } }}>
                                         <a>{popblogs[0].title}</a>
                                     </Link>
                                 </h4>
@@ -100,7 +100,7 @@ class BlogSidebar extends Component {
                     {
                         popblogs[1] &&
                         <article className="item">
-                            <Link href="#">
+                            <Link href={{ pathname: '/single-blog-1', query: { id: popblogs[1].id } }}>
                                 <a className="thumb">
                                     <span className="fullimage cover" role="img">
                                         <img src={popblogs[1].imageUrl} alt="image"/>
@@ -111,7 +111,7 @@ class BlogSidebar extends Component {
                             <div className="info">
                                 <span>{this.dateToString((new Date(popblogs[1].updated)).toJSON())}</span>
                                 <h4 className="title usmall">
-                                    <Link href="#">
+                                    <Link href={{ pathname: '/single-blog-1', query: { id: popblogs[1].id } }}>
                                         <a>{popblogs[1].title}</a>
                                     </Link>
                                 </h4>
@@ -124,7 +124,7 @@ class BlogSidebar extends Component {
                     {
                         popblogs[2] &&
                         <article className="item">
-                            <Link href="#">
+                            <Link href={{ pathname: '/single-blog-1', query: { id: popblogs[2].id } }}>
                                 <a className="thumb">
                                     <span className="fullimage cover" role="img">
                                         <img src={popblogs[2].imageUrl} alt="image"/>
@@ -135,7 +135,7 @@ class BlogSidebar extends Component {
                             <div className="info">
                                 <span>{this.dateToString((new Date(popblogs[2].updated)).toJSON())}</span>
                                 <h4 className="title usmall">
-                                    <Link href="#">
+                                    <Link href={{ pathname: '/single-blog-1', query: { id: popblogs[2].id } }}>
                                         <a>{popblogs[2].title}</a>
                                     </Link>
                                 </h4>

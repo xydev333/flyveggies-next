@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import BlogSidebar from './BlogSidebar';
-import { firebase } from '../../firebase';
 import { connect } from 'react-redux';
 import BlogPostModal from '../Modals/BlogPostModal';
 import { getBlogsFromDB, getCategoriesFromDB } from '../../store/actions/blogActions'
@@ -36,7 +35,7 @@ class BlogWithRightSidebar extends Component {
 
     componentDidMount(){
         this.props.getBlogsFromDB()
-        this.props.getCategoriesFromDB()        
+        this.props.getCategoriesFromDB()
     }
 
     dateToString = (formatedTime) => {
@@ -146,7 +145,9 @@ class BlogWithRightSidebar extends Component {
                                     <div key={idx} className="col-lg-6 col-md-6">
                                         <div className="single-blog-post">
                                             <div className="post-image blogImage">
-                                                <Link href="/single-blog-1">
+                                                <Link 
+                                                    href={{ pathname: '/single-blog-1', query: { id: blog.id } }}
+                                                >
                                                     <a>
                                                         <img src={blog.imageUrl} alt="image" style={imgStyle}/>
                                                     </a>
@@ -163,8 +164,12 @@ class BlogWithRightSidebar extends Component {
                                                 
                                                 <div className="titlediv">
                                                     <h3>
-                                                        <Link href="/single-blog-1">
-                                                            <a>{blog?.title}</a>
+                                                        <Link 
+                                                            href={{ pathname: '/single-blog-1', query: { id: blog.id } }}
+                                                        >
+                                                            <a>
+                                                                {blog?.title}
+                                                            </a>
                                                         </Link>
                                                     </h3>
                                                     {/* <button class="cf ly lz ma ek mb mc ry r me mf followbtn" onClick={this.followBlog}>
@@ -223,7 +228,6 @@ class BlogWithRightSidebar extends Component {
                 <BlogPostModal 
                     onClick={this.toggleModalBlogPost} 
                     active={this.state.BlogPostModal ? 'active' : ''}
-                    blogNum={blogs.length}
                 />
             </section>
         );
