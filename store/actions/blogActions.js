@@ -1,7 +1,10 @@
 import firebase from 'firebase';
 import {
   DISPLAY_BLOGS,
-  DISPLAY_CATEGORIES
+  DISPLAY_CATEGORIES,
+  SET_CURRENT_CATEGORY_ID,
+  SET_CURRENT_PAGE,
+  SET_SEARCH_QUERY
 } from './action-types/blog-actions';
 
 export const getBlogsFromDB = () => (dispatch) => {
@@ -44,4 +47,25 @@ export const getCategoriesFromDB = () => (dispatch) => {
     .catch(err => {
         console.log('error', err)
     });
+}
+
+export const setCurrentCategoryId = (id) => {
+    return {
+      type: SET_CURRENT_CATEGORY_ID,
+      currentCategoryId: id
+    }
+}
+
+export const setCurrentPage = (currentPage) => {
+    return {
+      type: SET_CURRENT_PAGE,
+      currentPage: currentPage
+    }
+}
+
+export const setSearchQuery = (searchQuery) => {
+    return {
+      type: SET_SEARCH_QUERY,
+      searchQuery: searchQuery
+    }
 }

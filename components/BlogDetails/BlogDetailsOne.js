@@ -28,7 +28,6 @@ class BlogDetailsOne extends Component {
     render() {
         const { id, blogs, categories } = this.props;
         const currentBlog = blogs.filter(blog => blog.id == id);
-        console.log(currentBlog[0]?.views, " ", currentBlog[0])
 
         return (
             <section className="blog-details-area ptb-100">

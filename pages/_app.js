@@ -9,10 +9,6 @@ import { checkUserLogin, addProducts } from '../store/actions/cartActions';
 import { AuthProvider } from '../context/AuthContext'
 
 const MyApp = ({Component, pageProps, store}) => {
-    React.useEffect(() => {
-        store.dispatch(checkUserLogin())
-        store.dispatch(addProducts())
-    });
     return (
         <Layout>
             <ToastContainer />

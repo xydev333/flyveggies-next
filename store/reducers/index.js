@@ -18,7 +18,11 @@ const initState = {
     authStatus: ''
   },
   blogReducer: {
-    blogs: []
+    blogs: [],
+    categories: [],
+    currentCategoryId: '0',
+    currentPage: 1,
+    searchQuery: ''
   }
 }
 
