@@ -120,14 +120,14 @@ const BlogPostModal1 = (props) => {
         }
     }
 
+    const onContentChange = e => {
+        setState(prevState => ({ ...prevState, content: e }));
+    }
+    
     const onChange = e => {
       const { name, value } = e.target;
       setState(prevState => ({ ...prevState, [name]: value }));
     };
-
-    const onContentChange = e => {
-        setState(prevState => ({ ...prevState, content: e }));
-    }
 
     const handleChange = (e) => {
         if(e.target.files[0]){

@@ -49,6 +49,13 @@ export const getCategoriesFromDB = () => (dispatch) => {
     });
 }
 
+export const setSearchQuery = (searchQuery) => {
+  return {
+    type: SET_SEARCH_QUERY,
+    searchQuery: searchQuery
+  }
+}
+
 export const setCurrentCategoryId = (id) => {
     return {
       type: SET_CURRENT_CATEGORY_ID,
@@ -60,12 +67,5 @@ export const setCurrentPage = (currentPage) => {
     return {
       type: SET_CURRENT_PAGE,
       currentPage: currentPage
-    }
-}
-
-export const setSearchQuery = (searchQuery) => {
-    return {
-      type: SET_SEARCH_QUERY,
-      searchQuery: searchQuery
     }
 }

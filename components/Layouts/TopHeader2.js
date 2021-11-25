@@ -11,15 +11,15 @@ class TopHeader extends Component {
         WishlistModal: false
     };
 
+    handleLogout = () => {
+        this.props.userLogout();
+        Router.push('/');
+    }
+
     toggleModalWishlist = () => {
         this.setState({
             WishlistModal: !this.state.WishlistModal
         });
-    }
-
-    handleLogout = () => {
-        this.props.userLogout();
-        Router.push('/');
     }
 
     render() {

@@ -9,10 +9,6 @@ class OrderUpdateModal extends Component {
         selected: ''
     };
 
-    closeModal = () => {
-        this.props.onClick(this.state.modal);
-    }
-
     handleUpdate = (e) => {
         e.preventDefault();
         if(this.state.selected === ''){
@@ -35,6 +31,10 @@ class OrderUpdateModal extends Component {
             this.closeModal();
             window.location.reload(false);
         }, 1000);
+    }
+
+    closeModal = () => {
+        this.props.onClick(this.state.modal);
     }
 
     render() {

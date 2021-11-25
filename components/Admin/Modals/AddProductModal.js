@@ -46,6 +46,19 @@ class AddProductModal extends Component {
         }
     }
 
+    handleChangeHover = (e) => {
+        if(e.target.files[0]){
+            let imageHover = e.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(imageHover);
+            reader.onload = () => {
+                // console.log(reader.result);
+                this.setState({ previewImageHover: reader.result})
+            }
+            this.handleUploadHover(imageHover);
+        }
+    }
+
     handleUpload = (image) => {
         const data = new FormData();
         if ( image ) {
@@ -85,19 +98,6 @@ class AddProductModal extends Component {
         } else {
             // if file not selected throw error
             alert( 'Please upload file' );
-        }
-    }
-
-    handleChangeHover = (e) => {
-        if(e.target.files[0]){
-            let imageHover = e.target.files[0];
-            let reader = new FileReader();
-            reader.readAsDataURL(imageHover);
-            reader.onload = () => {
-                // console.log(reader.result);
-                this.setState({ previewImageHover: reader.result})
-            }
-            this.handleUploadHover(imageHover);
         }
     }
 

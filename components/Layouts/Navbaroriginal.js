@@ -32,13 +32,13 @@ class Navbar extends Component {
         this._isMounted = false;
     }
 
-    // Search Modal
-    toggleModalSearch = () => {
+    // Sidebar Modal
+    toggleModalSidebar = () => {
         this.setState({
-            SearchModal: !this.state.SearchModal
+            SidebarModal: !this.state.SidebarModal
         });
     }
-    
+
     // Shopping Cart Modal
     toggleModalCart = () => {
         this.setState({
@@ -46,10 +46,10 @@ class Navbar extends Component {
         });
     }
 
-    // Sidebar Modal
-    toggleModalSidebar = () => {
+    // Search Modal
+    toggleModalSearch = () => {
         this.setState({
-            SidebarModal: !this.state.SidebarModal
+            SearchModal: !this.state.SearchModal
         });
     }
  
