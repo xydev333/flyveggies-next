@@ -13,7 +13,7 @@ const Layout = ({children}) => {
         <React.Fragment>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <title>Livani - React Next eCommerce Template</title>
+                <title>Fly Veggies</title>
                 <meta name="description" content="Flyveggies - Dispensery" />
                 <meta name="og:title" property="og:title" content="Fly Veggies - Dispensery"></meta>
                 <meta name="twitter:card" content="Flyveggies - Dispensery"></meta>
